@@ -4,7 +4,7 @@ Proyecto final del curso de Ingeniería de Software ESCOM 2023
 ## Segundo Milestone
 
 1. Correcciones (Cada quien tiene que hacer su parte)
-    1. Marco teórico: Conceptos, teorías, fórmulas, tecnología, metodologías, etc
+    1. Marco teórico: Conceptos, teorías, fórmulas, tecnología, metodologías, etc (Jair)
     2. Estado del arte: Ampliar la investigación de cada producto (Tania)
     3. En el cuadro comparativo agregar nuestra propuesta indicando la inovación
     4. Problemática: ¿Cuál es? (Diana)
