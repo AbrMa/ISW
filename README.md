@@ -9,7 +9,7 @@ Proyecto final del curso de Ingeniería de Software ESCOM 2023
     3. En el cuadro comparativo agregar nuestra propuesta indicando la inovación
     4. Problemática: ¿Cuál es? (Diana)
     5. Justificación: Ampliar (Diana)
-    6. Metodología: ¿Se documenta en marco teórico con su modelo? (Abraham)
+    6. Metodología: Se documenta en marco teórico con su modelo (Abraham)
     7. Cronograma: ¿Cómo se representa el milestone? (Jorge)
     8. Cronogramas por integrante (Jorge)
     9. Análisis de riesgo: Por favor con el formato y valores vistos en clase (Abraham)
