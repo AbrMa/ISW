@@ -17,7 +17,9 @@ Proyecto final del curso de Ingeniería de Software ESCOM 2023
 
 Clonar repo
 
-`git clone https://github.com/AbrMa/ISW.git`
+```console
+$ git clone https://github.com/AbrMa/ISW.git
+```
 
 Hay que verificar que nos encontremos en la rama principal
 
@@ -65,15 +67,19 @@ $ git push origin <nombre de la rama>
 ```
 
 En la página del repo se debe de ver el siguiente botón, le damos click 
+
 <img width="910" alt="Captura de pantalla 2023-05-28 a la(s) 21 43 39" src="https://github.com/AbrMa/ISW/assets/8070765/ab3f087d-4529-45e7-83f7-5cc936355993">
 
 Damos una breve descripción de los cambios, podemos incluir capturas de pantalla etc. para hacer más comprensible el PR, y pulsamos el botón de "Create Pull Request"
+
 <img width="925" alt="Captura de pantalla 2023-05-28 a la(s) 21 45 17" src="https://github.com/AbrMa/ISW/assets/8070765/3478bac8-a8e5-46d1-a972-c8758d9aef5a">
 
 Agregamos reviewers para nuestro PR 
+
 <img width="361" alt="Captura de pantalla 2023-05-28 a la(s) 21 45 37" src="https://github.com/AbrMa/ISW/assets/8070765/8ab25a21-d14d-45ba-afbd-22d9a953a671">
 
 Finalmente cuando ya tengamos aprovaciones pulsamos en el botón de "Merge Pull Request" y confirmamos
+
 <img width="938" alt="Captura de pantalla 2023-05-28 a la(s) 21 45 47" src="https://github.com/AbrMa/ISW/assets/8070765/d2b50049-2e6a-43e2-af1e-7ccbede85615">
 
 ## Ejecución Proyecto
