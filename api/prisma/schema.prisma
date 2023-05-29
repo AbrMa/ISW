@@ -9,3 +9,76 @@ datasource db {
   provider = "postgresql"
   url      = env("DATABASE_URL")
 }
+
+model Medico {
+  idMedico        String     @id @default(uuid())
+  correo          String
+  nombre          String
+  apellidoPaterno String
+  apellidoMaterno String?
+  telefono        String
+  especialidad    String
+  pacientes       Paciente[]
+}
+
+model Paciente {
+  idPaciente      String         @id @default(uuid())
+  correo          String
+  nombre          String
+  apellidoPaterno String
+  apellidoMaterno String?
+  telefono        String
+  fechaNacimiento DateTime
+  genero          Boolean
+  tipoDiabetes    String
+  nivelAzucar     Int
+  idMedico        String
+  medico          Medico         @relation(fields: [idMedico], references: [idMedico])
+  medicamentos    Medicamento[]
+  dietas          Dieta[]
+  ejercicios      Ejercicio[]
+  Recordatorio    Recordatorio[]
+}
+
+model Medicamento {
+  idMedicamento String   @id @default(uuid())
+  nombre        String
+  descripcion   String
+  dosis         String
+  horario       DateTime
+  fechaInicio   DateTime
+  fechaFin      DateTime
+  idPaciente    String
+  paciente      Paciente @relation(fields: [idPaciente], references: [idPaciente])
+}
+
+model Dieta {
+  idDieta       String   @id @default(uuid())
+  nombre        String
+  descripcion   String
+  tipoAlimentos String
+  carbohidratos Int
+  calorias      Int
+  restricciones String
+  idPaciente    String
+  paciente      Paciente @relation(fields: [idPaciente], references: [idPaciente])
+}
+
+model Ejercicio {
+  idEjercicio String   @id @default(uuid())
+  nombre      String
+  descripcion String
+  duracion    Int
+  intensidad  String
+  idPaciente  String
+  paciente    Paciente @relation(fields: [idPaciente], references: [idPaciente])
+}
+
+model Recordatorio {
+  idRecordatorio String   @id @default(uuid())
+  mensaje        String
+  fecha          DateTime
+  tipo           String
+  idPaciente     String
+  paciente       Paciente @relation(fields: [idPaciente], references: [idPaciente])
+}
