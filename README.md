@@ -90,5 +90,8 @@ Debemos cambiar al directorio `api` y ejecutar
 
 ```console
 $ npm i
-$ node run dev
+$ npm run dev
 ```
+<img width="441" alt="Captura de pantalla 2023-05-30 a la(s) 21 40 34" src="https://github.com/AbrMa/ISW/assets/8070765/df1d5269-e774-473f-bcfb-f424fa23eae9">
+
+
