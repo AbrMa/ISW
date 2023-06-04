@@ -14,17 +14,16 @@ export const protect = (req, res, next) => {
     if (!bearer) {
         res.status(401)
         res.json({
-            message: "Acceso no autorizado"
+            message: "No se ha enviado token"
         })
         return
     }
 
     const [, token] = bearer.split(" ")
     if (!token) {
-        console.log("here")
         res.status(401)
         res.json({
-            message: "Acceso no autorizado"
+            message: "No se ha enviado token"
         })
         return;
     }
@@ -39,7 +38,7 @@ export const protect = (req, res, next) => {
         console.error(e);
         res.status(401);
         res.json({
-            message: "Acceso no autorizado"
+            message: "Token mal formado"
         })
         return
     }
