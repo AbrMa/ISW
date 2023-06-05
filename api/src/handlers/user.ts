@@ -1,5 +1,5 @@
 import prisma from "../db"
-import { createJWT, hashPassword } from "../modules/auth"
+import { createJWT, hashPassword, comparePasswords } from "../modules/auth"
 
 export const createNewMedic = async (req, res) => {
     const user = await prisma.medico.create({
@@ -13,6 +13,27 @@ export const createNewMedic = async (req, res) => {
             contrasenia: req.body.contrasenia
         }
     })
+
+    const token = createJWT(user)
+    res.json({ token })
+}
+
+export const signinMedic = async (req, res) => {
+    const user = await prisma.medico.findUnique({
+        where: {
+            correo: req.body.correo
+        }
+    })
+
+    const isValid = await comparePasswords(req.body.contrasenia, user.contrasenia)
+
+    if (!isValid) {
+        res.status(401)
+        res.json({
+            message: "Usuario o contraseña no válidos"
+        })
+        return
+    }
 
     const token = createJWT(user)
     res.json({ token })

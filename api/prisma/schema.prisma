@@ -12,7 +12,7 @@ datasource db {
 
 model Medico {
   idMedico        String         @id @default(uuid())
-  correo          String
+  correo          String         @unique
   nombre          String
   apellidoPaterno String
   apellidoMaterno String?
@@ -28,7 +28,7 @@ model Medico {
 
 model Paciente {
   idPaciente      String         @id @default(uuid())
-  correo          String
+  correo          String         @unique
   nombre          String
   apellidoPaterno String
   apellidoMaterno String?
