@@ -86,7 +86,7 @@ Finalmente cuando ya tengamos aprovaciones pulsamos en el botón de "Merge Pull 
 
 ### Backend
 
-Debemos cambiar al directorio `api` y ejecutar
+Solicitar archivo `.env` y guardarlo dentro del folder `api`, debemos cambiar al directorio `api` y ejecutar
 
 ```console
 $ npm i
@@ -94,4 +94,34 @@ $ npm run dev
 ```
 <img width="441" alt="Captura de pantalla 2023-05-30 a la(s) 21 40 34" src="https://github.com/AbrMa/ISW/assets/8070765/df1d5269-e774-473f-bcfb-f424fa23eae9">
 
+## Utilización API
 
+Utilizar algún programa como [postman](https://www.postman.com/) o la extensión de vs code [thunder client](https://www.thunderclient.com/) para generar las peticiones.
+
+### Creación médico
+
+Hacer una petición `post` a la ruta `/usermedic`
+
+<img width="583" alt="Captura de pantalla 2023-06-04 a la(s) 22 58 14" src="https://github.com/AbrMa/ISW/assets/8070765/3ad99630-0c2f-4164-ae18-150301f920ce">
+
+En caso de ser creado de manera exitosa se debe de recibir un token como respuesta, dicho token será utilizado para acceder a las rutas protegidas 
+
+<img width="585" alt="Captura de pantalla 2023-06-04 a la(s) 22 58 26" src="https://github.com/AbrMa/ISW/assets/8070765/be6c48e7-3698-4d34-8f1a-8a811a265c31">
+
+La creación del usuario se debe ver reflejada en la base de datos del sistema, la cual podemos consultar si corremos el siguiente comando en el directorio de `api`
+
+```console
+npx prisma studio
+```
+
+<img width="687" alt="Captura de pantalla 2023-06-04 a la(s) 23 52 49" src="https://github.com/AbrMa/ISW/assets/8070765/b6b53901-3224-4344-aea0-72aa24b676d8">
+
+### Inicio de sesión como médico
+
+Hacer una petición `post` con el usuario y la contraseña a la ruta `/signinmedic`, en caso de ser ejecutado correctamente como respuesta se nos debe de regresar un json con el token
+
+<img width="1180" alt="Captura de pantalla 2023-06-04 a la(s) 22 58 59" src="https://github.com/AbrMa/ISW/assets/8070765/a90fc040-6311-46fc-b96f-99896ba64948">
+
+Si la contraseña o el usuario son incorrectos se deberá de regresar el siguiente error
+
+<img width="1176" alt="Captura de pantalla 2023-06-04 a la(s) 22 59 18" src="https://github.com/AbrMa/ISW/assets/8070765/c2d9a9f4-1684-4914-81ad-a878827bf307">
