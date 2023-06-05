@@ -10,7 +10,7 @@ export const createNewMedic = async (req, res) => {
             apellidoMaterno: req.body.apellidoMaterno,
             telefono: req.body.telefono,
             especialidad: req.body.especialidad,
-            contrasenia: req.body.contrasenia
+            contrasenia: await hashPassword(req.body.contrasenia)
         }
     })
 
