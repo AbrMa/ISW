@@ -111,7 +111,7 @@ En caso de ser creado de manera exitosa se debe de recibir un token como respues
 La creación del usuario se debe ver reflejada en la base de datos del sistema, la cual podemos consultar si corremos el siguiente comando en el directorio de `api`
 
 ```console
-npx prisma studio
+$ npx prisma studio
 ```
 
 <img width="687" alt="Captura de pantalla 2023-06-04 a la(s) 23 52 49" src="https://github.com/AbrMa/ISW/assets/8070765/b6b53901-3224-4344-aea0-72aa24b676d8">
