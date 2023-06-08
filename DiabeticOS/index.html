@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Diabetic OS</title>
+    <link rel="icon" href="Iconos/icon.png" type="png">
+    <link rel="stylesheet" href="index.css"> <!-- Ruta al archivo CSS -->
+    <script src="diabeticos.js"></script>  <!-- Ruta al archivo JS -->
+</head>
+<body>
+    <div class="container">
+        <div class="form-container">
+            <h2 class="bienvenido">Bienvenido</h2>
+            <p class="animado">Por favor, inicia sesión</p>
+            <form>
+                <div class="mb-3">
+                    <label for="usuario" class="form-label">Correo electrónico:</label>
+                    <input type="text" class="form-control" id="email" name="email" placeholder="Ingresa tu correo electrónico">
+                </div>
+              
+                <div class="mb-3">
+                    <label for="contraseña" class="form-label">Contraseña:</label>
+                    <input type="password" class="form-control" id="contraseña" name="contraseña" placeholder="Ingresa tu contraseña">
+                </div>
+                <button type="button" class="btn btn-primary" onclick="iniciarSesion()">Iniciar sesión</button>
+                <button type="button" class="btn btn-primary" onclick="redireccionarFormulario()">Crear cuenta</button> 
+                <div id="mensaje-flotante" class="mensaje-flotante"></div>
+            </form>
+        </div>
+    </div>
+</body>
+</html>
+

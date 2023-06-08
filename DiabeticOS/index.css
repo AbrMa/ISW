@@ -1,0 +1,153 @@
+
+.container {
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 100%;
+    height: 100vh;
+    background-image: url(Iconos/diabeticos.png);
+    background-position: center top;
+    background-repeat: no-repeat;
+    background-size: cover;
+    z-index: -1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    animation: animacionFondo 1s ease-in-out forwards;
+
+}
+
+.form-container {
+    font-family: 'Century Gothic';
+    font-size:large;
+    font-weight: 300;
+    color: #ffffff;
+    width: 100%;
+    max-width: 400px;
+    padding: 20px;
+    background-color: #0b0e50;
+    border-radius: 50px;
+    animation: fadeIn 1s;   
+}
+
+@keyframes animacionTexto {
+    0% {
+        transform: translateX(-100%);
+    }
+    100% {
+        transform: translateX(0%);
+    }
+}
+
+.animado {
+    font-weight: 800;
+    animation: animacionTexto 1s ease-in-out forwards;
+    text-align: center;
+    font-family: Century Gothic;
+    font-size:x-large;
+}
+
+.bienvenido{
+    font-weight: 800;
+    animation: animacionTexto 1s ease-in-out forwards;
+    text-align: center;
+    font-family: Century Gothic;
+    font-size:xx-large;
+}
+  
+
+@keyframes fadeIn {
+    0% {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes animacionFondo {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    form {
+        max-width: 100%;
+    }
+}
+
+form {
+    color: white;
+    max-width: 250px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.form-control{
+    font-family: Century Gothic;
+}
+
+input {
+    font-family: Century Gothic;
+    display: block;
+    width: auto;
+    padding: 10px;
+    margin-bottom: 10px;
+    align-items: center;
+    border-radius: 53px;
+    background-color: #ffffff;
+}
+
+button {
+    font-family: Century Gothic;
+    font-size: large;
+    font-weight: 500;
+    display: block;
+    margin: 0 auto;
+    width: 60%;
+    padding: 10px;
+    margin-bottom: 10px;
+    align-items: center;
+    background-color: #cccccc;
+    color: #0b0e50;
+    border: none;
+    border-radius: 53px;
+    transition: transform 0.3s ease;
+}
+
+button:hover {
+    transform: scale(1.2);
+}
+
+.btn-aceptar {
+    background-color: #616161;
+    color: white;
+    border: none;
+    border-radius: 53px;
+    padding: 5px 5px;
+    cursor: pointer;
+}
+
+
+.mensaje-flotante {
+    border-radius: 50px;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    padding: 10px 30px;
+    background-color: rgba(0, 0, 0, 0.8);
+    color: white;
+    font-size: 16px;
+    display: none;
+}
