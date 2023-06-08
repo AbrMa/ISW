@@ -1,15 +1,14 @@
 import prisma from "../db"
 import { createJWT, hashPassword, comparePasswords } from "../modules/auth"
 
-export const createNewMedic = async (req, res) => {
-    const user = await prisma.medico.create({
+export const createNewUser = async (req, res) => {
+    const user = await prisma.paciente.create({
         data: {
-            correo: req.body.correo,
             nombre: req.body.nombre,
-            apellidoPaterno: req.body.apellidoPaterno,
-            apellidoMaterno: req.body.apellidoMaterno,
+            apellidos: req.body.apellidos,
+            fechaNacimiento: new Date(req.body.fechaNacimiento),
+            correo: req.body.correo,
             telefono: req.body.telefono,
-            especialidad: req.body.especialidad,
             contrasenia: await hashPassword(req.body.contrasenia)
         }
     })
@@ -18,8 +17,8 @@ export const createNewMedic = async (req, res) => {
     res.json({ token })
 }
 
-export const signinMedic = async (req, res) => {
-    const user = await prisma.medico.findUnique({
+export const signinUser = async (req, res) => {
+    const user = await prisma.paciente.findUnique({
         where: {
             correo: req.body.correo
         }

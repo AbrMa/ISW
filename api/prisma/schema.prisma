@@ -10,89 +10,61 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
-model Medico {
-  idMedico        String         @id @default(uuid())
-  correo          String         @unique
-  nombre          String
-  apellidoPaterno String
-  apellidoMaterno String?
-  telefono        String
-  especialidad    String
-  pacientes       Paciente[]
-  contrasenia     String
-  Medicamento     Medicamento[]
-  Dieta           Dieta[]
-  Ejercicio       Ejercicio[]
-  Recordatorio    Recordatorio[]
-}
-
 model Paciente {
   idPaciente      String         @id @default(uuid())
-  correo          String         @unique
   nombre          String
-  apellidoPaterno String
-  apellidoMaterno String?
-  telefono        String
+  apellidos       String
   fechaNacimiento DateTime
-  genero          Boolean
-  tipoDiabetes    String
-  nivelAzucar     Int
-  idMedico        String
-  medico          Medico         @relation(fields: [idMedico], references: [idMedico])
+  correo          String         @unique
+  telefono        String
+  contrasenia     String
+  genero          Boolean?
+  peso            Int?
+  altura          Int?
+  tipoDiabetes    String?
   medicamentos    Medicamento[]
   dietas          Dieta[]
   ejercicios      Ejercicio[]
   Recordatorio    Recordatorio[]
-  contrasenia     String
 }
 
 model Medicamento {
-  idMedicamento String    @id @default(uuid())
+  idMedicamento String         @id @default(uuid())
   nombre        String
-  descripcion   String
   dosis         String
-  horario       DateTime
+  frecuencia    Int
   fechaInicio   DateTime
   fechaFin      DateTime
   idPaciente    String?
-  paciente      Paciente? @relation(fields: [idPaciente], references: [idPaciente])
-  idMedico      String
-  medico        Medico    @relation(fields: [idMedico], references: [idMedico])
+  paciente      Paciente?      @relation(fields: [idPaciente], references: [idPaciente])
+  Recordatorio  Recordatorio[]
 }
 
 model Dieta {
-  idDieta       String    @id @default(uuid())
-  nombre        String
-  descripcion   String
-  tipoAlimentos String
-  carbohidratos Int
-  calorias      Int
-  restricciones String
-  idPaciente    String?
-  paciente      Paciente? @relation(fields: [idPaciente], references: [idPaciente])
-  idMedico      String
-  medico        Medico    @relation(fields: [idMedico], references: [idMedico])
+  idDieta      String    @id @default(uuid())
+  nombre       String
+  ingredientes String
+  fecha        DateTime
+  hora         DateTime
+  idPaciente   String?
+  paciente     Paciente? @relation(fields: [idPaciente], references: [idPaciente])
 }
 
 model Ejercicio {
   idEjercicio String    @id @default(uuid())
   nombre      String
-  descripcion String
   duracion    Int
-  intensidad  String
+  fecha       DateTime
   idPaciente  String?
   paciente    Paciente? @relation(fields: [idPaciente], references: [idPaciente])
-  idMedico    String
-  medico      Medico    @relation(fields: [idMedico], references: [idMedico])
 }
 
 model Recordatorio {
-  idRecordatorio String    @id @default(uuid())
-  mensaje        String
-  fecha          DateTime
-  tipo           String
-  idPaciente     String?
-  paciente       Paciente? @relation(fields: [idPaciente], references: [idPaciente])
-  idMedico       String
-  medico         Medico    @relation(fields: [idMedico], references: [idMedico])
+  idRecordatorio String      @id @default(uuid())
+  hora           DateTime
+  repetir        Int
+  idMedicamento  String
+  medicamento    Medicamento @relation(fields: [idMedicamento], references: [idMedicamento])
+  idPaciente     String
+  paciente       Paciente    @relation(fields: [idPaciente], references: [idPaciente])
 }
