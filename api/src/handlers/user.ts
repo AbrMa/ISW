@@ -6,10 +6,10 @@ export const createNewUser = async (req, res) => {
         data: {
             nombre: req.body.nombre,
             apellidos: req.body.apellidos,
-            fechaNacimiento: req.body.fechaNacimiento,
+            fechaNacimiento: new Date(req.body.fechaNacimiento),
             correo: req.body.correo,
             telefono: req.body.telefono,
-            contrasenia: req.body.contrasenia
+            contrasenia: await hashPassword(req.body.contrasenia)
         }
     })
 
