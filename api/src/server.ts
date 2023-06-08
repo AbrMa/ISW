@@ -1,7 +1,7 @@
 import express from 'express'
 import router from './router'
 import { protect } from './modules/auth'
-import { createNewMedic, signinMedic } from './handlers/user'
+import {createNewUser, signinUser } from './handlers/user'
 
 const app = express()
 
@@ -17,7 +17,7 @@ app.get('/', (req, res) => {
 
 app.use('/api', protect, router)
 
-app.post('/usermedic', createNewMedic)
-app.post('/signinmedic', signinMedic)
+app.post('/user', createNewUser)
+app.post('/signin', signinUser)
 
 export default app
