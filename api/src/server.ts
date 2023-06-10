@@ -29,6 +29,11 @@ app.post('/user',
     handleInputErrors,
     createNewUser
 )
-app.post('/signin', signinUser)
+app.post('/signin',
+    body('correo').isEmail(),
+    body('contrasenia').isString(),
+    handleInputErrors,
+    signinUser
+)
 
 export default app
