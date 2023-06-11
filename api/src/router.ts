@@ -1,6 +1,7 @@
 import { Router } from 'express'
 import { body } from 'express-validator'
 import { handleInputErrors } from './modules/middleware'
+import { getMedicamentos } from './handlers/medicamento'
 
 const router = Router()
 
@@ -8,8 +9,10 @@ const router = Router()
 * Medicamento
 */
 
-router.get('/medicamento', () => {})
-router.get('/medicamento:id', () => {})
+router.get('/medicamento', getMedicamentos)
+router.get('/medicamento:id', (req, res) => {
+    console.log('hello from medicamento')
+})
 router.put('/medicamento:id',
     body('nombre').optional().isString(),
     body('dosis').optional().isString(),
