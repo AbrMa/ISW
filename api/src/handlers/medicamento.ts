@@ -46,3 +46,22 @@ export const createMedicamento = async (req, res) => {
         data: medicamento
     })
 }
+
+export const updateMedicamento = async (req, res) => {
+    const medicamento = await prisma.medicamento.update({
+        where: {
+            idMedicamento_idPaciente: {
+                idMedicamento: req.params.idMedicamento,
+                idPaciente: req.paciente.idPaciente
+            }
+        },
+        data: {
+            nombre: req.body.nombre,
+            dosis: req.body.dosis,
+            frecuencia: req.body.frecuencia,
+            fechaInicio: new Date(req.body.fechaInicio),
+            fechaFin: new Date(req.body.fechaFin),
+            idPaciente: req.paciente.idPaciente
+        }
+    })
+}

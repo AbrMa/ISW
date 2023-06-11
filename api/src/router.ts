@@ -1,7 +1,7 @@
 import { Router } from 'express'
 import { body } from 'express-validator'
 import { handleInputErrors } from './modules/middleware'
-import { createMedicamento, getMedicamentos, getOneMedicamento } from './handlers/medicamento'
+import { createMedicamento, getMedicamentos, getOneMedicamento, updateMedicamento } from './handlers/medicamento'
 
 const router = Router()
 
@@ -18,7 +18,7 @@ router.put('/medicamento:id',
     body('fechaInicio').optional().isString().matches(/^\d{2}-\d{2}-\d{4}$/), 
     body('fechaFin').optional().isString().matches(/^\d{2}-\d{2}-\d{4}$/), 
     handleInputErrors,
-    (req, res) => {}
+    updateMedicamento
 )
 router.post('/medicamento',
     body('nombre').exists().isString(),
