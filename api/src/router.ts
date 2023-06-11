@@ -1,7 +1,7 @@
 import { Router } from 'express'
 import { body } from 'express-validator'
 import { handleInputErrors } from './modules/middleware'
-import { getMedicamentos } from './handlers/medicamento'
+import { createMedicamento, getMedicamentos, getOneMedicamento } from './handlers/medicamento'
 
 const router = Router()
 
@@ -10,9 +10,7 @@ const router = Router()
 */
 
 router.get('/medicamento', getMedicamentos)
-router.get('/medicamento:id', (req, res) => {
-    console.log('hello from medicamento')
-})
+router.get('/medicamento:id', getOneMedicamento)
 router.put('/medicamento:id',
     body('nombre').optional().isString(),
     body('dosis').optional().isString(),
@@ -23,13 +21,13 @@ router.put('/medicamento:id',
     (req, res) => {}
 )
 router.post('/medicamento',
-body('nombre').exists().isString(),
+    body('nombre').exists().isString(),
     body('dosis').exists().isString(),
     body('frecuencia').exists().isNumeric(),
     body('fechaInicio').exists().isString().matches(/^\d{2}-\d{2}-\d{4}$/), 
     body('fechaFin').exists().isString().matches(/^\d{2}-\d{2}-\d{4}$/), 
     handleInputErrors, 
-    (req, res) => {}
+    createMedicamento
 )
 router.delete('/medicamento:id', () => {})
 
