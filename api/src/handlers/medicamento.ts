@@ -65,3 +65,19 @@ export const updateMedicamento = async (req, res) => {
         }
     })
 }
+
+export const deleteMedicamento = async (req, res) => {
+    const medicamento = await prisma.medicamento.delete({
+        where: {
+            idMedicamento_idPaciente: {
+                idMedicamento: req.params.idMedicamento,
+                idPaciente: req.paciente.idPaciente
+            }
+        }
+    })
+
+
+    res.json({
+        data: medicamento
+    })
+}

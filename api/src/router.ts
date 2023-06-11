@@ -1,7 +1,7 @@
 import { Router } from 'express'
 import { body } from 'express-validator'
 import { handleInputErrors } from './modules/middleware'
-import { createMedicamento, getMedicamentos, getOneMedicamento, updateMedicamento } from './handlers/medicamento'
+import { createMedicamento, deleteMedicamento, getMedicamentos, getOneMedicamento, updateMedicamento } from './handlers/medicamento'
 
 const router = Router()
 
@@ -29,7 +29,7 @@ router.post('/medicamento',
     handleInputErrors, 
     createMedicamento
 )
-router.delete('/medicamento:id', () => {})
+router.delete('/medicamento:id', deleteMedicamento)
 
 /*
 * Dieta
