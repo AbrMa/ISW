@@ -67,3 +67,18 @@ export const updateDieta = async (req, res) => {
         data: dieta
     })
 }
+
+export const deleteDieta = async (req, res) => {
+    const dieta = await prisma.dieta.delete({
+        where: {
+            idDieta_idPaciente: {
+                idDieta: req.params.idDieta,
+                idPaciente: req.paciente.idPaciente
+            }
+        }
+    })
+
+    res.json({
+        data: dieta
+    })
+}

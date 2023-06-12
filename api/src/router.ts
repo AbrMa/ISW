@@ -2,7 +2,7 @@ import { Router } from 'express'
 import { body } from 'express-validator'
 import { handleInputErrors } from './modules/middleware'
 import { createMedicamento, deleteMedicamento, getMedicamentos, getOneMedicamento, updateMedicamento } from './handlers/medicamento'
-import { createDieta, getDietas, getOneDieta, updateDieta } from './handlers/dieta'
+import { createDieta, deleteDieta, getDietas, getOneDieta, updateDieta } from './handlers/dieta'
 
 const router = Router()
 
@@ -54,7 +54,7 @@ router.post('/dieta',
     handleInputErrors,
     createDieta
 )
-router.delete('/dieta:idDieta', () => {})
+router.delete('/dieta/:idDieta', deleteDieta)
 
 /*
 * Ejercicio
