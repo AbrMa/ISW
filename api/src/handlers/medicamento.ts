@@ -64,6 +64,10 @@ export const updateMedicamento = async (req, res) => {
             idPaciente: req.paciente.idPaciente
         }
     })
+
+    res.json({
+        data: medicamento
+    })
 }
 
 export const deleteMedicamento = async (req, res) => {
