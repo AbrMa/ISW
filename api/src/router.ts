@@ -2,7 +2,7 @@ import { Router } from 'express'
 import { body } from 'express-validator'
 import { handleInputErrors } from './modules/middleware'
 import { createMedicamento, deleteMedicamento, getMedicamentos, getOneMedicamento, updateMedicamento } from './handlers/medicamento'
-import { getDietas } from './handlers/dieta'
+import { createDieta, getDietas, getOneDieta, updateDieta } from './handlers/dieta'
 
 const router = Router()
 
@@ -37,14 +37,14 @@ router.delete('/medicamento/:idMedicamento', deleteMedicamento)
 */
 
 router.get('/dieta', getDietas)
-router.get('/dieta/:id', () => {})
-router.put('/dieta/:id', 
+router.get('/dieta/:idDieta', getOneDieta)
+router.put('/dieta/:idDieta', 
     body('nombre').optional().isString(),
     body('ingredientes').optional().isString(),
     body('fecha').optional().matches(/^\d{2}-\d{2}-\d{4}$/), 
     body('hora').optional(),
     handleInputErrors,
-    (req, res) => {}
+    updateDieta
 )
 router.post('/dieta', 
     body('nombre').exists().isString(),
@@ -52,9 +52,9 @@ router.post('/dieta',
     body('fecha').exists().isString().matches(/^\d{2}-\d{2}-\d{4}$/), 
     body('hora').exists().isString(),
     handleInputErrors,
-    (req, res) =>{}
+    createDieta
 )
-router.delete('/dieta:id', () => {})
+router.delete('/dieta:idDieta', () => {})
 
 /*
 * Ejercicio
