@@ -46,7 +46,7 @@ model Dieta {
   nombre       String
   ingredientes String
   fecha        DateTime
-  hora         DateTime
+  hora         String
   idPaciente   String
   paciente     Paciente @relation(fields: [idPaciente], references: [idPaciente])
   @@unique([idDieta, idPaciente])
