@@ -35,9 +35,10 @@ model Medicamento {
   frecuencia    Int
   fechaInicio   DateTime
   fechaFin      DateTime
-  idPaciente    String?
-  paciente      Paciente?      @relation(fields: [idPaciente], references: [idPaciente])
+  idPaciente    String
+  paciente      Paciente      @relation(fields: [idPaciente], references: [idPaciente])
   Recordatorio  Recordatorio[]
+  @@unique([idMedicamento, idPaciente])
 }
 
 model Dieta {
@@ -46,8 +47,9 @@ model Dieta {
   ingredientes String
   fecha        DateTime
   hora         DateTime
-  idPaciente   String?
-  paciente     Paciente? @relation(fields: [idPaciente], references: [idPaciente])
+  idPaciente   String
+  paciente     Paciente @relation(fields: [idPaciente], references: [idPaciente])
+  @@unique([idDieta, idPaciente])
 }
 
 model Ejercicio {
@@ -55,8 +57,9 @@ model Ejercicio {
   nombre      String
   duracion    Int
   fecha       DateTime
-  idPaciente  String?
-  paciente    Paciente? @relation(fields: [idPaciente], references: [idPaciente])
+  idPaciente  String
+  paciente    Paciente @relation(fields: [idPaciente], references: [idPaciente])
+  @@unique([idEjercicio, idPaciente])
 }
 
 model Recordatorio {
@@ -67,4 +70,5 @@ model Recordatorio {
   medicamento    Medicamento @relation(fields: [idMedicamento], references: [idMedicamento])
   idPaciente     String
   paciente       Paciente    @relation(fields: [idPaciente], references: [idPaciente])
+  @@unique([idRecordatorio, idPaciente])
 }

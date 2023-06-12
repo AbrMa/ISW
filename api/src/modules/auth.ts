@@ -9,9 +9,9 @@ export const hashPassword = (password) => {
     return bcrypt.hash(password, 8)
 }
 
-export const createJWT = (user) => {
+export const createJWT = (paciente) => {
   const token = jwt.sign(
-    { id: user.id},
+    { idPaciente: paciente.idPaciente, correo: paciente.correo },
     process.env.JWT_SECRET
   );
   return token;
@@ -39,7 +39,7 @@ export const protect = (req, res, next) => {
 
     try {
         const payload = jwt.verify(token, process.env.JWT_SECRET)
-        req.user = payload
+        req.paciente = payload
         console.log(payload)
         next()
         return

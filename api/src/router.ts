@@ -1,6 +1,7 @@
 import { Router } from 'express'
 import { body } from 'express-validator'
 import { handleInputErrors } from './modules/middleware'
+import { createMedicamento, deleteMedicamento, getMedicamentos, getOneMedicamento, updateMedicamento } from './handlers/medicamento'
 
 const router = Router()
 
@@ -8,35 +9,35 @@ const router = Router()
 * Medicamento
 */
 
-router.get('/medicamento', () => {})
-router.get('/medicamento:id', () => {})
-router.put('/medicamento:id',
+router.get('/medicamento', getMedicamentos)
+router.get('/medicamento/:idMedicamento', getOneMedicamento)
+router.put('/medicamento/:idMedicamento',
     body('nombre').optional().isString(),
     body('dosis').optional().isString(),
     body('frecuencia').optional().isNumeric(),
     body('fechaInicio').optional().isString().matches(/^\d{2}-\d{2}-\d{4}$/), 
     body('fechaFin').optional().isString().matches(/^\d{2}-\d{2}-\d{4}$/), 
     handleInputErrors,
-    (req, res) => {}
+    updateMedicamento
 )
 router.post('/medicamento',
-body('nombre').exists().isString(),
+    body('nombre').exists().isString(),
     body('dosis').exists().isString(),
     body('frecuencia').exists().isNumeric(),
     body('fechaInicio').exists().isString().matches(/^\d{2}-\d{2}-\d{4}$/), 
     body('fechaFin').exists().isString().matches(/^\d{2}-\d{2}-\d{4}$/), 
     handleInputErrors, 
-    (req, res) => {}
+    createMedicamento
 )
-router.delete('/medicamento:id', () => {})
+router.delete('/medicamento/:idMedicamento', deleteMedicamento)
 
 /*
 * Dieta
 */
 
 router.get('/dieta', () => {})
-router.get('/dieta:id', () => {})
-router.put('/dieta:id', 
+router.get('/dieta/:id', () => {})
+router.put('/dieta/:id', 
     body('nombre').optional().isString(),
     body('ingredientes').optional().isString(),
     body('fecha').optional().matches(/^\d{2}-\d{2}-\d{4}$/), 
@@ -59,8 +60,8 @@ router.delete('/dieta:id', () => {})
 */
 
 router.get('/ejercicio', () => {})
-router.get('/ejercicio:id', () => {})
-router.put('/ejercicio:id',
+router.get('/ejercicio/:id', () => {})
+router.put('/ejercicio/:id',
     body('nombre').optional().isString(),
     body('duracion').optional().isNumeric(),
     body('fecha').optional().isString().matches(/^\d{2}-\d{2}-\d{4}$/),
@@ -81,8 +82,8 @@ router.delete('/ejercicio:id', () => {})
 */
 
 router.get('/recordatorio', () => {})
-router.get('/recordatorio:id', () => {})
-router.put('/recordatorio:id', 
+router.get('/recordatorio/:id', () => {})
+router.put('/recordatorio/:id', 
     body('hora').optional().isString(),
     body('repetir').optional().isNumeric(),
     handleInputErrors,
@@ -94,6 +95,6 @@ router.post('/recordatorio',
     handleInputErrors,
     (req, res) => {}
 )
-router.delete('/recordatorio:id', () => {})
+router.delete('/recordatorio/:id', () => {})
 
 export default router
