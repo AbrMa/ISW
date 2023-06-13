@@ -1,3 +1,4 @@
+//Mensaje de flotante
 function mostrarMensaje(mensaje) {
   var mensajeFlotante = document.getElementById("mensaje-flotante");
   mensajeFlotante.textContent = mensaje;
@@ -27,7 +28,7 @@ function mostrarMensaje(mensaje) {
   }
 }
 
-
+//funcion de inicio de sesion
 function iniciarSesion() {
   var email = document.getElementById("email").value;
   var contraseña = document.getElementById("contraseña").value;
@@ -44,11 +45,13 @@ function iniciarSesion() {
   }
 }
 
+
+//Esta funcion soo redirecciona a inicio
 function cerrarSesion() {
   window.location.href = "index.html";
 }
 
-
+//Formulario de crear cuenta
 function CrearCuenta() {
   var name = document.getElementById("name").value;
   var lastname = document.getElementById("lastname").value;
@@ -82,14 +85,6 @@ function redireccionarInicioSesion() {
   window.location.href = "index.html"; // Reemplaza con la URL del formulario de iniciar sesión
 }
 
-document.addEventListener("DOMContentLoaded", function() {
-  var menuIcon = document.querySelector(".menu-icon");
-  var menu = document.querySelector(".menu");
-
-  menuIcon.addEventListener("click", function() {
-    menu.classList.toggle("menu-open");
-  });
-});
 
 document.addEventListener("DOMContentLoaded", function() {
   const newsItems = document.querySelectorAll(".news-item");
