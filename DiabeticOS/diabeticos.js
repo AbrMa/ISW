@@ -227,9 +227,10 @@ function guardarDatosalimento(event) {
   var unidad = document.getElementById("unidad").value;
   var hora = document.getElementById("hora").value;
   var fecha = document.getElementById("fecha").value;
+  var cantidad = document.getElementById("cantidad").value;
 
   // Verificar que todos los campos estén llenos
-  if (alimento && unidad && hora && fecha) {
+  if (alimento && unidad && hora && fecha && cantidad ) {
     // Mostrar el mensaje de éxito
     var successMessage = document.getElementById("successMessage");
     successMessage.textContent = "Sus datos se guardaron correctamente.";
@@ -264,3 +265,4 @@ function mostrarAlarmasalimento() {
   var dietsContainer = document.getElementById("dietsContainer");
   dietsContainer.style.display = "block";
 }
+

@@ -1,5 +1,5 @@
 body{
-    background-image: url(Iconos/fondo.png);
+    background-image: url(Iconos/fondodieta.jpg);
     background-position-x: center;
     background-origin: content-box;
     background-position-y: center;
@@ -258,10 +258,8 @@ input,select {
     padding: 10px;
     text-align: center;
   }
-  
 
   .diet-box {
-    
     width: auto;
     height: 75px;
     background-color: #e15e12;
@@ -281,23 +279,26 @@ input,select {
   
   .diet-food {
     font-weight: bold;
-    margin-right: 10px;
+    margin-right: 100px;
   }
   
   .diet-unit {
-    margin-right: 10px;
+    margin-right: 100px;
   }
-  
+
+  .diet-num {
+    margin-right: 100px;
+  }
   .diet-time {
-    margin-right: 10px;
+    margin-right: 100px;
   }
   
   .diet-date {
-    margin-right: 10px;
+    margin-right: 100px;
   }
   
   .diet-actions {
-    margin-left: 10px;
+    margin-left: 100px;
   }
 
   .btn-edit {
