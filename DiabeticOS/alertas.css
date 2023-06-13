@@ -1,0 +1,309 @@
+body{
+    background-image: url(Iconos/fondo.png);
+    background-position-x: center;
+    background-origin: content-box;
+    background-position-y: center;
+    animation: animateBackground 120s linear infinite;
+  }
+  .container {
+      width: 100%;
+      height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between; /* Agregado */
+    }
+  
+  .header {
+      font-family:'Century Gothic';
+      font-weight: 200;
+      color: #ffffff;
+      background-color: #0b0e50;
+      display: flex;
+      align-items: center;
+      padding: 20px;
+      border-bottom: 1px solid #ccc;
+      position: sticky; 
+      justify-content: space-between;
+      top: 0; 
+      z-index: 999; 
+      animation: animacionFondo 1s ease-in-out forwards;
+    }
+    
+  .footer {
+      position: sticky;
+      bottom: 0; 
+      background-color: #0b0e50;
+      animation: animacionFondo 1s ease-in-out forwards;
+    }
+    
+  .header img {
+      width: 50px;
+      height: 50px;
+      margin-right: 10px;
+    }
+    
+  .footer hr {
+      margin-bottom: 10px;
+    }
+
+  .image-gallery {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    
+  .image-gallery a {
+      display: inline-block;
+      width: 80px; /* Ancho de cada ícono */
+      height: 80px; /* Alto de cada ícono */
+      margin: 0 10px;
+      transition: transform 0.3s ease-in-out;
+    }
+  
+  .image-gallery a:hover {
+      transform: scale(1.2);
+    }
+    
+  .image-gallery img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+    
+  .profile-photo {
+      border-radius: 50%;
+      width: 150px; 
+      height: 150px;
+      font-weight: 800;
+      animation: animacionFondo 1s ease-in-out forwards;
+    }
+  
+  @keyframes animacionFondo {
+      0% {
+          opacity: 0;
+      }
+      100% {
+          opacity: 1;
+      }
+  }
+  
+  @keyframes animateBackground {
+    0% {
+      background-position: 0 0;
+    }
+    100% {
+      background-position: 100% 0;
+    }
+  }
+  @keyframes floatAnimation {
+    0% {
+      transform: translateY(0);
+    }
+    50% {
+      transform: translateY(-10px);
+    }
+    100% {
+      transform: translateY(0);
+    }
+  }
+  
+  .content {
+    animation: animacionFondo 1s ease-in-out forwards;
+    padding: 5px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    
+  }
+  
+  .title{
+    width: 50%;
+    text-align: center;
+    margin-top: 0px;
+    color: #ffffff;
+    font-family: 'Century Gothic';
+    font-size:xx-large;
+    font-weight: 1000;
+    margin-bottom: 20px;
+    border: 1px solid #0b0e50; 
+    padding: 20px; 
+    background-color: #0b0e50 ;
+    border-radius: 53px;
+  }
+  
+  #clock {
+    font-family: Century Gothic ;
+    font-size: 20px;
+    color: #ffffff;
+    background-color: #f2f2f200;
+    padding: 10px;
+    margin-top: 10px;
+    
+  }
+
+  form {
+    font-family: Century Gothic;
+    font-weight: 1000;
+    color: rgb(0, 0, 0);
+    max-width: 250px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    }
+input,select {
+    font-family: Century Gothic;
+    font-weight: 1000;
+    font-size: large;
+    margin: 0;
+    display: block;
+    width: 50%;
+    padding: 10px;
+    margin-bottom: 10px;
+    align-items: center;
+    border-radius: 53px;
+    border-radius: 53px;
+    background-color: #cccccc;
+}
+  
+  .btn-close {
+    font-family: Century Gothic;
+    font-size: large;
+    font-weight: 500;
+    display: flex;
+    margin: 0 auto;
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 10px;
+    background-color: #ffffff;
+    color: #0b0e50;
+    border: none;
+    border-radius: 53px;
+    transition: transform 0.3s ease;
+  }
+  
+  .btn-close:hover {
+    transform: scale(1.2);
+  }
+  
+  .btn-alarm {
+    font-family: Century Gothic;
+    font-size: large;
+    font-weight: 500;
+    display: flex;
+    margin: 0 ;
+    width: auto;
+    padding: 10px;
+    margin-bottom: 10px;
+    background-color: #0c8037;
+    color: #ffffff;
+    border: none;
+    border-radius: 53px;
+    transition: transform 0.3s ease;
+  }
+
+  .btn-save{
+    font-family: Century Gothic;
+    font-size: large;
+    font-weight: 500;
+    display: flex;
+    margin: 0 ;
+    width: auto;
+    padding: 10px;
+    margin-bottom: 10px;
+    background-color: #0c8037;
+    color: #ffffff;
+    border: none;
+    border-radius: 53px;
+    transition: transform 0.3s ease;
+  }
+  
+  
+  .btn-alarm:hover {
+    transform: scale(1.2);
+  }
+
+  .btn-save:hover {
+    transform: scale(1.2);
+  }
+  
+  .hidden {
+    display: none;
+  }
+  
+  form {
+    margin-top: 20px;
+  }
+  
+  label {
+    display: block;
+    margin-bottom: 5px;
+  }
+  
+  input, select {
+    margin-bottom: 10px;
+  }
+  
+  button[type="submit"] {
+    margin-top: 10px;
+  }
+
+  #successMessage {
+    font-family: Century Gothic;
+    background-color: #008807;
+    color: #ffffff;
+    padding: 10px;
+    text-align: center;
+  }
+  
+  .alarms-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .alarm-box {
+    font-family: Century Gothic;
+    background-color: #008807;
+    width: 300px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    padding: 10px;
+    margin-bottom: 10px;
+  }
+  
+  .alarm-details {
+    margin-bottom: 10px;
+    color: #ffffff;
+    
+  }
+  
+  .alarm-time {
+    font-weight: bold;
+    color: #ffffff;
+  }
+  
+  .alarm-repeat {
+    color: #ffffff;
+  }
+  
+  .alarm-medication {
+    font-style: italic;
+  }
+  
+  .alarm-actions {
+    text-align: right;
+  }
+  
+  .btn-edit {
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    padding: 5px 10px;
+    border-radius: 3px;
+    cursor: pointer;
+  }
+  
+  
+  

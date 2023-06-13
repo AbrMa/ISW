@@ -152,3 +152,38 @@ document.addEventListener("DOMContentLoaded", function() {
   updateClock();
   setInterval(updateClock, 1000);
 });
+//Formulario de alarma
+document.addEventListener("DOMContentLoaded", function() {
+  var btnAgregarAlarma = document.getElementById("btnAgregarAlarma");
+  var formAgregarAlarma = document.getElementById("formAgregarAlarma");
+
+  btnAgregarAlarma.addEventListener("click", function() {
+    formAgregarAlarma.classList.toggle("hidden");
+  });
+});
+
+//Mensaje de alarma agregada
+function guardarDatos(event) {
+  event.preventDefault();
+
+  // Obtener los valores de los campos del formulario
+  var hora = document.getElementById("hora").value;
+  var repetir = document.getElementById("repetir").value;
+  var medicamento = document.getElementById("medicamento").value;
+
+  // Verificar que todos los campos estén llenos
+  if (hora && repetir && medicamento) {
+    // Mostrar el mensaje de éxito
+    var successMessage = document.getElementById("successMessage");
+    successMessage.textContent = "Sus datos se guardaron correctamente.";
+    successMessage.classList.remove("hidden");
+
+    // Ocultar el mensaje después de 4 segundos
+    setTimeout(function() {
+      successMessage.classList.add("hidden");
+    }, 4000);
+  }
+}
+
+
+

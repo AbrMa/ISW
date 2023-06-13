@@ -1,9 +1,10 @@
 <!DOCTYPE html>
 <html>
 <head>
+  <meta charset="UTF-8">
   <title>Comunidad</title>
   <link rel="icon" href="Iconos/icon.png" type="png">
-  <link rel="stylesheet" href="comunidad.css"> <!-- Ruta al archivo CSS -->
+  <link rel="stylesheet" href="alertas.css"> <!-- Ruta al archivo CSS -->
   <script src="diabeticos.js"></script>  <!-- Ruta al archivo JS -->
 </head>
 <body>
@@ -12,10 +13,42 @@
       <img src="Profile_photo\foto.jpg" alt="Foto de perfil" class="profile-photo">
       <h1>Bienvenido</h1>
       <div id="clock"></div>
-      <div><button type="button" class="btn btn-primary" onclick="cerrarSesion()">Cerrar sesión</button></div>
+      <div><button type="button" class="btn-close" onclick="cerrarSesion()">Cerrar sesión</button></div>
     </div>
     <div class="content">
-
+      <div id="successMessage" class="hidden"></div>
+      <h2 class="title">Alarmas</h2>
+      <button type="button" id="btnAgregarAlarma" class="btn-alarm">Agregar nueva alarma</button>
+      <form id="formAgregarAlarma" class="hidden">
+        <label for="hora">Hora:</label>
+        <input type="text" id="hora" name="hora" required>
+        <label for="repetir">Repetir:</label>
+        <select id="repetir" name="repetir" required>
+          <option value="diario">Diario</option>
+          <option value="solo_hoy">Solo hoy</option>
+          <option value="nunca">Nunca</option>
+        </select>
+        <label for="medicamento">Medicamento:</label>
+        <select id="medicamento" name="medicamento" required>
+          <option value="">Selecciona un medicamento</option>
+          <option value="Medicamento 1">Medicamento 1</option>
+          <option value="Medicamento 2">Medicamento 2</option>
+          <!-- Agrega aquí más opciones de medicamentos -->
+        </select>
+        <button type="submit" class="btn-save" onclick="guardarDatos(event)">Guardar</button>
+      </form>
+      <div class="alarms-container">
+        <div class="alarm-box">
+          <div class="alarm-details">
+            <div class="alarm-time">8:00 AM</div>
+            <div class="alarm-repeat">Diario</div>
+            <div class="alarm-medication">Medicamento A</div>
+          </div>
+          <div class="alarm-actions">
+            <button class="btn-edit">Editar</button>
+          </div>
+        </div>
+      </div>
     </div>
     
     <div class="footer">
