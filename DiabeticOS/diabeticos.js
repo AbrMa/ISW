@@ -182,8 +182,28 @@ function guardarDatos(event) {
     setTimeout(function() {
       successMessage.classList.add("hidden");
     }, 4000);
+
+    // Ocultar formulario y mostrar elementos de las alarmas
+    ocultarFormulario();
+    mostrarAlarmas();
   }
 }
 
+function mostrarFormulario() {
+  var formulario = document.getElementById("formAgregarAlarma");
+  formulario.classList.remove("hidden");
 
+  // Ocultar elementos de las alarmas
+  var alarmasContainer = document.getElementById("alarmsContainer");
+  alarmasContainer.style.display = "none";
+}
 
+function ocultarFormulario() {
+  var formulario = document.getElementById("formAgregarAlarma");
+  formulario.classList.add("hidden");
+}
+
+function mostrarAlarmas() {
+  var alarmasContainer = document.getElementById("alarmsContainer");
+  alarmasContainer.style.display = "block";
+}

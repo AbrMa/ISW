@@ -18,8 +18,8 @@
     <div class="content">
       <div id="successMessage" class="hidden"></div>
       <h2 class="title">Alarmas</h2>
-      <button type="button" id="btnAgregarAlarma" class="btn-alarm">Agregar nueva alarma</button>
-      <form id="formAgregarAlarma" class="hidden">
+      <button type="button" id="btnAgregarAlarma" class="btn-alarm" onclick="mostrarFormulario()">Agregar nueva alarma</button>
+      <form id="formAgregarAlarma" class="hidden" onsubmit="guardarDatos(event)">
         <label for="hora">Hora:</label>
         <input type="text" id="hora" name="hora" required>
         <label for="repetir">Repetir:</label>
@@ -35,9 +35,9 @@
           <option value="Medicamento 2">Medicamento 2</option>
           <!-- Agrega aquí más opciones de medicamentos -->
         </select>
-        <button type="submit" class="btn-save" onclick="guardarDatos(event)">Guardar</button>
+        <button type="submit" class="btn-save">Guardar</button>
       </form>
-      <div class="alarms-container">
+      <div class="alarms-container" id="alarmsContainer">
         <div class="alarm-box">
           <div class="alarm-details">
             <div class="alarm-time">8:00 AM</div>
@@ -75,7 +75,7 @@
       </div>
     </div>
   </div>
+
+  <script src="diabeticos.js"></script>  <!-- Mueve la referencia al archivo JS al final del body -->
 </body>
 </html>
-
-
