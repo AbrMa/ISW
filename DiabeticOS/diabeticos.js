@@ -163,7 +163,7 @@ document.addEventListener("DOMContentLoaded", function() {
 });
 
 //Mensaje de alarma agregada
-function guardarDatos(event) {
+function guardarDatosmedicamento(event) {
   event.preventDefault();
 
   // Obtener los valores de los campos del formulario
@@ -184,12 +184,12 @@ function guardarDatos(event) {
     }, 4000);
 
     // Ocultar formulario y mostrar elementos de las alarmas
-    ocultarFormulario();
-    mostrarAlarmas();
+    ocultarFormulariomedicamento();
+    mostrarAlarmasmedicamento();
   }
 }
 
-function mostrarFormulario() {
+function mostrarFormulariomedicamento() {
   var formulario = document.getElementById("formAgregarAlarma");
   formulario.classList.remove("hidden");
 
@@ -198,12 +198,69 @@ function mostrarFormulario() {
   alarmasContainer.style.display = "none";
 }
 
-function ocultarFormulario() {
+function ocultarFormulariomedicamento() {
   var formulario = document.getElementById("formAgregarAlarma");
   formulario.classList.add("hidden");
 }
 
-function mostrarAlarmas() {
+function mostrarAlarmasmedicamento() {
   var alarmasContainer = document.getElementById("alarmsContainer");
   alarmasContainer.style.display = "block";
+}
+
+//Formulario de alimento
+document.addEventListener("DOMContentLoaded", function() {
+  var btnAgregarAlimento= document.getElementById("btnAgregarAlimento");
+  var formAgregarAlimento = document.getElementById("formAgregarAlimento");
+
+  btnAgregarAlimento.addEventListener("click", function() {
+    formAgregarAlimento.classList.toggle("hidden");
+  });
+});
+
+//Mensaje de alimento agregado
+function guardarDatosalimento(event) {
+  event.preventDefault();
+
+  // Obtener los valores de los campos del formulario
+  var alimento = document.getElementById("alimento").value;
+  var unidad = document.getElementById("unidad").value;
+  var hora = document.getElementById("hora").value;
+  var fecha = document.getElementById("fecha").value;
+
+  // Verificar que todos los campos estén llenos
+  if (alimento && unidad && hora && fecha) {
+    // Mostrar el mensaje de éxito
+    var successMessage = document.getElementById("successMessage");
+    successMessage.textContent = "Sus datos se guardaron correctamente.";
+    successMessage.classList.remove("hidden");
+
+    // Ocultar el mensaje después de 4 segundos
+    setTimeout(function() {
+      successMessage.classList.add("hidden");
+    }, 4000);
+
+    // Ocultar formulario y mostrar elementos de las alarmas
+    ocultarFormularioalimento();
+    mostrarAlarmasalimento();
+  }
+} 
+
+function mostrarFormularioalimento() {
+  var formulariodieta = document.getElementById("formAgregarAlimento");
+  formulariodieta.classList.remove("hidden");
+
+  // Ocultar elementos de las alarmas
+  var dietsContainer = document.getElementById("dietsContainer");
+  dietsContainer.style.display = "none";
+}
+
+function ocultarFormularioalimento() {
+  var formulario = document.getElementById("formAgregarAlimento");
+  formulario.classList.add("hidden");
+}
+
+function mostrarAlarmasalimento() {
+  var dietsContainer = document.getElementById("dietsContainer");
+  dietsContainer.style.display = "block";
 }

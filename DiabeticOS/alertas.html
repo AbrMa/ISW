@@ -2,7 +2,7 @@
 <html>
 <head>
   <meta charset="UTF-8">
-  <title>Comunidad</title>
+  <title>Alarmas</title>
   <link rel="icon" href="Iconos/icon.png" type="png">
   <link rel="stylesheet" href="alertas.css"> <!-- Ruta al archivo CSS -->
   <script src="diabeticos.js"></script>  <!-- Ruta al archivo JS -->
@@ -18,10 +18,10 @@
     <div class="content">
       <div id="successMessage" class="hidden"></div>
       <h2 class="title">Alarmas</h2>
-      <button type="button" id="btnAgregarAlarma" class="btn-alarm" onclick="mostrarFormulario()">Agregar nueva alarma</button>
-      <form id="formAgregarAlarma" class="hidden" onsubmit="guardarDatos(event)">
+      <button type="button" id="btnAgregarAlarma" class="btn-alarm" onclick="mostrarFormulariomedicamento()">Agregar nueva alarma</button>
+      <form id="formAgregarAlarma" class="hidden" onsubmit="guardarDatosmedicamento(event)">
         <label for="hora">Hora:</label>
-        <input type="text" id="hora" name="hora" required>
+        <input type="text" id="hora" name="hora" required placeholder="HH:MM">
         <label for="repetir">Repetir:</label>
         <select id="repetir" name="repetir" required>
           <option value="diario">Diario</option>

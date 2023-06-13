@@ -2,9 +2,9 @@
 <html>
 <head>
   <meta charset="UTF-8">
-  <title>Comunidad</title>
+  <title>Alimentación</title>
   <link rel="icon" href="Iconos/icon.png" type="png">
-  <link rel="stylesheet" href="comunidad.css"> <!-- Ruta al archivo CSS -->
+  <link rel="stylesheet" href="dieta.css"> <!-- Ruta al archivo CSS -->
   <script src="diabeticos.js"></script>  <!-- Ruta al archivo JS -->
 </head>
 <body>
@@ -13,12 +13,46 @@
       <img src="Profile_photo\foto.jpg" alt="Foto de perfil" class="profile-photo">
       <h1>Bienvenido</h1>
       <div id="clock"></div>
-      <div><button type="button" class="btn btn-primary" onclick="cerrarSesion()">Cerrar sesión</button></div>
+      <div><button type="button" class="btn-close" onclick="cerrarSesion()">Cerrar sesión</button></div>
     </div>
     <div class="content">
-
+      <div id="successMessage" class="hidden"></div>
+      <h2 class="title">Alimentación</h2>
+      <button type="button" id="btnAgregarAlimento" class="btn-alimento" onclick="mostrarFormularioalimento()">Agregar nueva alimento</button>
+      <form id="formAgregarAlimento" class="hidden" onsubmit="guardarDatosalimento(event)">
+        <label for="alimento">Alimento:</label>
+        <select id="alimento" name="alimento" required>
+          <option value="">Selecciona un alimento</option>
+          <option value="Alimento 1">Alimento 1</option>
+          <option value="Alimento 2">Alimento 2</option>
+        </select>
+        <label for="unidad">Alimento:</label>
+        <select id="unidad" name="unidad" required>
+          <option value="">Selecciona una unidad </option>
+          <option value="tz">taza</option>
+          <option value="gr">gramos</option>
+          <option value="pz">pieza</option>
+        </select>
+        <label for="hora">Hora:</label>
+        <input type="text" id="hora" name="hora" required placeholder="HH:MM">
+        <label for="fecha">Fecha:</label>
+        <input type="date" id="fecha" name="fecha">
+        <button type="submit" class="btn-save">Guardar</button>
+      </form>
     </div>
-    
+    <div class="diets-container" id="dietsContainer">
+      <div class="diet-box">
+        <div class="diet-details">
+          <div class="diet-food">Nombre de la dieta</div>
+          <div class="diet-unit">Unidad</div>
+          <div class="diet-time">Hora</div>
+          <div class="diet-date">Fecha</div>
+        </div>
+        <div class="diet-actions">
+          <button class="btn-edit" onclick="editarDieta()">Editar</button>
+        </div>
+      </div>
+    </div>    
     <div class="footer">
       <hr>
       <div class="image-gallery">
@@ -43,5 +77,6 @@
       </div>
     </div>
   </div>
+  <script src="diabeticos.js"></script>  
 </body>
 </html>
