@@ -21,7 +21,7 @@
       <button type="button" id="btnAgregarAlarma" class="btn-alarm" onclick="mostrarFormulariomedicamento()">Agregar nueva alarma</button>
       <form id="formAgregarAlarma" class="hidden" onsubmit="guardarDatosmedicamento(event)">
         <label for="hora">Hora:</label>
-        <input type="text" id="hora" name="hora" required placeholder="HH:MM">
+        <input type="text" id="hora" name="hora" required placeholder="HH:MM" pattern="([01]?[0-9]|2[0-3]):[0-5][0-9]" title="Ingrese una hora válida en formato HH:MM">
         <label for="repetir">Repetir:</label>
         <select id="repetir" name="repetir" required>
           <option value="diario">Diario</option>
@@ -75,7 +75,6 @@
       </div>
     </div>
   </div>
-
-  <script src="diabeticos.js"></script>  <!-- Mueve la referencia al archivo JS al final del body -->
+  <script src="diabeticos.js"></script>  
 </body>
 </html>

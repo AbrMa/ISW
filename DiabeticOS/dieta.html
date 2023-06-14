@@ -28,7 +28,7 @@
         </select>
         <label for="cantidad">Cantidad:</label>
         <input type="number" id="cantidad" name="cantidad" required placeholder="Cantidad en número">
-        <label for="unidad">Alimento:</label>
+        <label for="unidad">Unidad:</label>
         <select id="unidad" name="unidad" required>
           <option value="">Selecciona una unidad </option>
           <option value="taza">taza</option>
@@ -36,7 +36,7 @@
           <option value="pieza">piezas</option>
         </select>
         <label for="hora">Hora:</label>
-        <input type="text" id="hora" name="hora" required placeholder="HH:MM">
+        <input type="text" id="hora" name="hora" required placeholder="HH:MM" pattern="([01]?[0-9]|2[0-3]):[0-5][0-9]" title="Ingrese una hora válida en formato HH:MM">
         <label for="fecha">Fecha:</label>
         <input type="date" id="fecha" name="fecha">
         <button type="submit" class="btn-save">Guardar</button>
