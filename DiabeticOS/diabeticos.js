@@ -266,3 +266,62 @@ function mostrarAlarmasalimento() {
   dietsContainer.style.display = "block";
 }
 
+
+//Formulario ejercicio
+document.addEventListener("DOMContentLoaded", function() {
+  var btnAgregarEjercicio= document.getElementById("btnAgregarEjercicio");
+  var formAgregarEjercicio = document.getElementById("formAgregarEjercicio");
+
+  btnAgregarEjercicio.addEventListener("click", function() {
+    formAgregarEjercicio.classList.toggle("hidden");
+  });
+});
+
+//Mensaje de alimento agregado
+function guardarDatosejercicio(event) {
+  event.preventDefault();
+
+  // Obtener los valores de los campos del formulario
+  var ejercicio = document.getElementById("ejercicio").value;
+  var tiempo = document.getElementById("tiempo").value;
+  var fecha = document.getElementById("fecha").value;
+  
+
+  // Verificar que todos los campos estén llenos
+  if (ejercicio && tiempo && fecha  ) {
+    // Mostrar el mensaje de éxito
+    var successMessage = document.getElementById("successMessage");
+    successMessage.textContent = "Sus datos se guardaron correctamente.";
+    successMessage.classList.remove("hidden");
+
+    // Ocultar el mensaje después de 4 segundos
+    setTimeout(function() {
+      successMessage.classList.add("hidden");
+    }, 4000);
+
+    // Ocultar formulario y mostrar elementos de las alarmas
+    ocultarFormularioejercicio();
+    mostrarAlarmasejercicio();
+  }
+} 
+
+function mostrarFormularioejercicio() {
+  var formularioejercicio = document.getElementById("formAgregarEjercicio");
+  formularioejercicio.classList.remove("hidden");
+
+  // Ocultar elementos de las alarmas
+  var dietsContainer = document.getElementById("dietsContainer");
+  dietsContainer.style.display = "none";
+}
+
+function ocultarFormularioejercicio() {
+  var formulario = document.getElementById("formAgregarEjercicio");
+  formulario.classList.add("hidden");
+}
+
+function mostrarAlarmasejercicio(){
+  var dietsContainer = document.getElementById("dietsContainer");
+  dietsContainer.style.display = "block";
+}
+
+

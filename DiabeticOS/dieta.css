@@ -1,5 +1,5 @@
 body {
-  background-image: url(Iconos/fondodieta.jpg);
+  background-image: url(Iconos/fondodieta.png);
   background-position: center;
   background-origin: content-box;
   animation: animateBackground 120s linear infinite;
@@ -29,6 +29,8 @@ body {
 }
 
 .footer {
+  height: auto;
+  width: auto;
   position: sticky;
   bottom: 0;
   background-color: #0b0e50;
@@ -239,10 +241,10 @@ button[type='submit'] {
 
 .diet-box {
   font-size: larger;
-  color: #ffffff;
+  color: #fff;
   width: auto;
   height: 75px;
-  background-color: #ca4e00;
+  background-color: #ac6106;
   font-family: 'Century Gothic';
   display: flex;
   align-items: center;
@@ -259,14 +261,14 @@ button[type='submit'] {
 
 .diet-food {
   font-weight: bold;
-  margin-right: 100px;
+  margin-right: auto;
 }
 
 .diet-unit,
 .diet-num,
 .diet-time,
 .diet-date {
-  margin-right: 100px;
+  margin-right: auto;
 }
 
 .diet-actions {
@@ -285,7 +287,7 @@ button[type='submit'] {
   background-color: #337ab7;
   color: #fff;
   border-radius: 4px;
-  padding: 8px 16px;
+
   transition: background-color 0.3s, transform 0.3s;
 }
 

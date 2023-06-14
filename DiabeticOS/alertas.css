@@ -1,5 +1,5 @@
 body {
-  background-image: url(Iconos/fondo.png);
+  background-image: url(Iconos/fondoalerta.png);
   background-position: center;
   background-origin: content-box;
   animation: animateBackground 120s linear infinite;
@@ -157,7 +157,7 @@ select {
   background-color: #cccccc;
 }
 
-.btn-close 
+.btn-close, 
 .btn-alarm,
 .btn-save,
 .btn-edit {
