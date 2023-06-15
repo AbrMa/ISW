@@ -25,6 +25,8 @@
           <option value="">Ejercicio realizado</option>
           <option value="Ejercicio 1">Ejercicio 1</option>
           <option value="Ejercicio 2">Ejercicio 2</option>
+          <option value="Ejercicio 1">Ejercicio 1</option>
+          <option value="Ejercicio 2">Ejercicio 2</option>
         </select>
         <label for="tiempo">Tiempo realizado:</label>
         <input type="number" id="tiempo" name="tiempo" required placeholder="Numero en minutos">
@@ -32,13 +34,15 @@
         <input type="date" id="fecha" name="fecha">
         <button type="submit" class="btn-save">Guardar</button>
       </form>
-      <table class="exercise-table">
+      <table class="exercise-table" id="ExerciseTable">
         <thead>
           <tr>
             <th></th>
             <th>Ejercicio</th>
             <th>Tiempo (min)</th>
             <th>Fecha</th>
+            <th>Editar</th>
+            <th>Eliminar</th>
           </tr>
         </thead>
         <tbody>
@@ -47,12 +51,16 @@
             <td>Bicicleta</td>
             <td>10 minutos</td>
             <td>10/06/2023</td>
+            <td><img src="Iconos/edit.png" alt="Foto del ejercicio" class="edit-image"></td>
+            <td><img src="Iconos/delete.png" alt="Foto del ejercicio" class="delete-image"></td>
           </tr>
           <tr>
             <td><img src="Ejercicio/Gimnasio.png" alt="Foto del ejercicio" class="exercise-image"></td>
             <td>Ejercicio 1</td>
             <td>90 minutos</td>
             <td>11/06/2023</td>
+            <td><img src="Iconos/edit.png" alt="Foto del ejercicio" class="edit-image"></td>
+            <td><img src="Iconos/delete.png" alt="Foto del ejercicio" class="delete-image"></td>
           </tr>
         </tbody>
       </table>

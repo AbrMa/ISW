@@ -17,7 +17,7 @@ body {
   font-family: 'Century Gothic';
   font-weight: 200;
   color: #ffffff;
-  background-color: #0b0e50;
+  background-image: url(Iconos/fondoheader.png);
   display: flex;
   align-items: center;
   padding: 20px;
@@ -189,6 +189,7 @@ select {
 
 form {
   margin-top: 20px;
+  border-radius: 12px;
 }
 
 label {

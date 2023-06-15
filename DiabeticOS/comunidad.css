@@ -17,10 +17,10 @@ body{
     font-family:'Century Gothic';
     font-weight: 200;
     color: #ffffff;
-    background-color: #0b0e50;
+    background-image: url(Iconos/fondoheader.png);
     display: flex;
     align-items: center;
-    padding: 20px;
+    padding: 10px;
     border-bottom: 1px solid #ccc;
     position: sticky; 
     justify-content: space-between;
@@ -215,25 +215,24 @@ body{
   color: #555;
 }
 
-button {
-  font-family: Century Gothic;
+button
+{
+  font-family: 'Century Gothic';
   font-size: large;
   font-weight: 500;
   display: flex;
-  margin: 0 auto;
-  width: 100%;
+  margin: 0;
+  width: auto;
   padding: 10px;
   margin-bottom: 10px;
-  background-color: #ffffff;
-  color: #0b0e50;
-  border: none;
-  border-radius: 53px;
-  transition: transform 0.3s ease;
+  background-color: #337ab7;
+  color: #fff;
+  border-radius: 4px;
+  padding: 8px 16px;
+  transition: background-color 0.3s, transform 0.3s;
 }
 
-button:hover {
-  transform: scale(1.2);
+button:hover{
+  background-color: #23527c;
+  transform: scale(1.1);
 }
-
-
-

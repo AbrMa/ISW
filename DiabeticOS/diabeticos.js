@@ -310,7 +310,7 @@ function mostrarFormularioejercicio() {
   formularioejercicio.classList.remove("hidden");
 
   // Ocultar elementos de las alarmas
-  var dietsContainer = document.getElementById("dietsContainer");
+  var dietsContainer = document.getElementById("ExerciseTable");
   dietsContainer.style.display = "none";
 }
 
@@ -320,7 +320,7 @@ function ocultarFormularioejercicio() {
 }
 
 function mostrarAlarmasejercicio(){
-  var dietsContainer = document.getElementById("dietsContainer");
+  var dietsContainer = document.getElementById("ExerciseTable");
   dietsContainer.style.display = "block";
 }
 
