@@ -34,14 +34,14 @@ function iniciarSesion() {
   var contraseña = document.getElementById("contraseña").value;
 
   if (email === '' || contraseña === '') {
-    mostrarMensaje("Por favor, ingresa tu correo y contraseña.");
+    mostrarMensaje("Por favor, ingresa tu correo y contraseña.\n");
     return;
   }
 
   if (email === 'jairivansalas@gmail.com' && contraseña === '1234') {
     mostrarMensaje("Inicio de sesión exitoso. ¡Bienvenido!");
   } else {
-    mostrarMensaje("Credenciales inválidas. Por favor, intenta nuevamente.");
+    mostrarMensaje("Credenciales inválidas. Por favor, intenta nuevamente.\n");
   }
 }
 

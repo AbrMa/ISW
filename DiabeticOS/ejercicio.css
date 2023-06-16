@@ -9,10 +9,12 @@ body {
     min-height: 100vh;
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
+    justify-content: flex-start;
+    
   }
   
   .header {
+    align-items: flex-start;
     font-family: 'Century Gothic';
     font-weight: 200;
     color: #ffffff;

@@ -114,36 +114,30 @@ input {
     background-color: #cccccc;
 }
 
-button {
-    font-family: Century Gothic;
+button{
+    
+    font-family: 'Century Gothic';
     font-size: large;
     font-weight: 500;
     display: block;
     margin: 0 auto;
-    width: 60%;
+    width: auto;
     padding: 10px;
     margin-bottom: 10px;
-    align-items: center;
-    background-color: #cccccc;
-    color: #0b0e50;
-    border: 2px solid #0b0e50; 
-    border-radius: 50px;
-    transition: transform 0.3s ease;
+    background-color: #337ab7;
+    color: #fff;
+    border-radius: 4px;
+    padding: 8px 16px;
+    transition: background-color 0.3s, transform 0.3s;
+    
 }
 
-button:hover {
-    transform: scale(1.2);
-}
+button:hover
+    {
+        background-color: #23527c;
+        transform: scale(1.1);
+      }
 
-.btn-aceptar {
-    background-color: #616161;
-    color: white;
-    border: none;
-    border-radius: 53px;
-    padding: 10px 10px;
-    cursor: pointer;
-    /* Agrega aquí otros estilos personalizados para el botón "Aceptar" */
-}
 
 .mensaje-flotante {
     border-radius: 50px;
@@ -151,7 +145,7 @@ button:hover {
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    padding: 10px 20px;
+    padding: 10px 30px;
     background-color: rgba(0, 0, 0, 0.8);
     color: white;
     font-size: 16px;

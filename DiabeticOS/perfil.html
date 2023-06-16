@@ -16,7 +16,40 @@
       <div><button type="button" class="btn-close" onclick="cerrarSesion()">Cerrar sesión</button></div>
     </div>
     <div class="content">
-     
+      <div id="successMessage" class="hidden"></div>
+      <h2 class="title">Perfil</h2>
+      <form id="userForm">
+        <label for="nombre">Nombre:</label>
+        <input type="text" id="nombre" name="nombre" required>
+    
+        <label for="apellidos">Apellidos:</label>
+        <input type="text" id="apellidos" name="apellidos" required>
+    
+        <label for="correo">Correo:</label>
+        <input type="email" id="correo" name="correo" required>
+    
+        <label for="fechaNacimiento">Fecha de nacimiento:</label>
+        <input type="date" id="fechaNacimiento" name="fechaNacimiento" required>
+    
+        <label for="telefono">Teléfono:</label>
+        <input type="tel" id="telefono" name="telefono" required>
+    
+        <label for="peso">Peso (kg):</label>
+        <input type="number" id="peso" name="peso" required>
+    
+        <label for="altura">Altura (cm):</label>
+        <input type="number" id="altura" name="altura" required>
+    
+        <label for="tipoDiabetes">Tipo de diabetes:</label>
+        <select id="tipoDiabetes" name="tipoDiabetes" required>
+          <option value="tipo1">Tipo 1</option>
+          <option value="tipo2">Tipo 2</option>
+          <option value="gestacional">Gestacional</option>
+          <option value="otro">Otro</option>
+        </select>
+    
+        <button type="submit" class="btn-save">Actualizar datos</button>
+      </form>
     </div>
     <div class="footer">
       <hr>
@@ -35,9 +68,6 @@
         </a>
         <a href="dieta.html">
           <img src="Iconos/alimentos.png" alt="Alimentos" title="Revisa tus planes alimenticios">
-        </a>
-        <a href="medicina.html">
-          <img src="Iconos/medicamento.png" alt="Medicamentos" title="Revisa tus medicamentos ">
         </a>
       </div>
     </div>

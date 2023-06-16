@@ -191,17 +191,13 @@ select {
   transition: background-color 0.3s, transform 0.3s;
 }
 
-.btn-close {
-  background-color: #ffffff;
-  color: #0b0e50;
-}
-
 .btn-close:hover {
   transform: scale(1.2);
 }
 
 .btn-alimento,
-.btn-save {
+.btn-save,
+.btn-close {
   background-color: #337ab7;
 }
 
@@ -240,58 +236,60 @@ button[type='submit'] {
 }
 
 .diet-box {
-  font-size: larger;
-  color: #fff;
-  width: auto;
-  height: 75px;
-  background-color: #ac6106;
-  font-family: 'Century Gothic';
+  width: 250px; 
   display: flex;
-  align-items: center;
-  justify-content: space-between;
+  flex-direction: column;
+  align-items: flex-start;
   padding: 10px;
+  background-image: url(Iconos/diet-box.png);
+  color: #080606;
+  border-radius: 0cap;
+  border-radius: 5px;
+  margin-bottom: 10px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.diet-box .diet-details {
   margin-bottom: 10px;
 }
 
-.diet-details {
-  flex: 1;
-  display: flex;
-  align-items: center;
-}
-
-.diet-food {
+.diet-box .diet-food {
+  font-family: Century Gothic;
   font-weight: bold;
-  margin-right: auto;
+  font-size: 36px;
 }
 
-.diet-unit,
-.diet-num,
-.diet-time,
-.diet-date {
-  margin-right: auto;
+.diet-box .diet-num {
+  font-family: Century Gothic;
+  font-weight: bold;
+  font-size: 48px;
 }
 
-.diet-actions {
-  margin-left: 100px;
+.diet-box .diet-unit {
+  font-family: Century Gothic;
+  font-size: 28px;
 }
 
-.btn-edit {
-  font-family: 'Century Gothic';
-  font-size: large;
-  font-weight: 500;
-  display: flex;
-  margin: 0;
-  width: auto;
-  padding: 10px;
-  margin-bottom: 10px;
-  background-color: #337ab7;
-  color: #fff;
-  border-radius: 4px;
+.diet-box .diet-time,
+.diet-box .diet-date {
+  font-family: Century Gothic;
+  font-size: 28px;
+  opacity: 0.8;
+}
 
+.diet-box .btn-edit {
+  padding: 10px 20px;
+  background-color: #000000;
+  color: #ffffff;
+  border: 1px solid #000000;
+  border-radius: 3px;
+  cursor: pointer;
   transition: background-color 0.3s, transform 0.3s;
 }
 
-.btn-edit:hover {
-  background-color: #23527c;
+.diet-box .btn-edit:hover {
+  background-color: #FFFFFF;
+  color: #8a4c01;
   transform: scale(1.1);
 }

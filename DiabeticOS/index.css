@@ -108,35 +108,29 @@ input {
     background-color: #ffffff;
 }
 
-button {
-    font-family: Century Gothic;
+button{
+    
+    font-family: 'Century Gothic';
     font-size: large;
     font-weight: 500;
     display: block;
     margin: 0 auto;
-    width: 60%;
+    width: auto;
     padding: 10px;
     margin-bottom: 10px;
-    align-items: center;
-    background-color: #cccccc;
-    color: #0b0e50;
-    border: none;
-    border-radius: 53px;
-    transition: transform 0.3s ease;
+    background-color: #337ab7;
+    color: #fff;
+    border-radius: 4px;
+    padding: 8px 16px;
+    transition: background-color 0.3s, transform 0.3s;
+    
 }
 
-button:hover {
-    transform: scale(1.2);
-}
-
-.btn-aceptar {
-    background-color: #616161;
-    color: white;
-    border: none;
-    border-radius: 53px;
-    padding: 5px 5px;
-    cursor: pointer;
-}
+button:hover
+    {
+        background-color: #23527c;
+        transform: scale(1.1);
+      }
 
 
 .mensaje-flotante {
