@@ -160,7 +160,8 @@ select {
 .btn-close, 
 .btn-alarm,
 .btn-save,
-.btn-edit {
+.btn-edit,
+.btn-delete{
   font-family: 'Century Gothic';
   font-size: large;
   font-weight: 500;
@@ -178,7 +179,8 @@ select {
 
 .btn-save:hover,
 .btn-alarm:hover,
-.btn-edit:hover {
+.btn-edit:hover,
+.btn-delete:hover{
   background-color: #23527c;
   transform: scale(1.1);
 }

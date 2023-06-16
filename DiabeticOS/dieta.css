@@ -278,7 +278,8 @@ button[type='submit'] {
   opacity: 0.8;
 }
 
-.diet-box .btn-edit {
+.diet-box .btn-edit,
+.diet-box .btn-delete {
   padding: 10px 20px;
   background-color: #000000;
   color: #ffffff;
@@ -288,7 +289,8 @@ button[type='submit'] {
   transition: background-color 0.3s, transform 0.3s;
 }
 
-.diet-box .btn-edit:hover {
+.diet-box .btn-edit:hover,
+.diet-box .btn-delete:hover{
   background-color: #FFFFFF;
   color: #8a4c01;
   transform: scale(1.1);
