@@ -4,6 +4,7 @@ import { handleInputErrors } from './modules/middleware'
 import { createMedicamento, deleteMedicamento, getMedicamentos, getOneMedicamento, updateMedicamento } from './handlers/medicamento'
 import { createDieta, deleteDieta, getDietas, getOneDieta, updateDieta } from './handlers/dieta'
 import { createEjercicio, deleteEjercicio, getEjercicios, getOneEjercicio, updateEjercicio } from './handlers/ejercicio'
+import { createRecordatorio, deleteRecordatorio, getOneRecordatorio, getRecordatorios, updateRecordatorio } from './handlers/recordatorios'
 
 const router = Router()
 
@@ -83,20 +84,20 @@ router.delete('/ejercicio/:idEjercicio', deleteEjercicio)
 * Recordatorio
 */
 
-router.get('/recordatorio', () => {})
-router.get('/recordatorio/:id', () => {})
-router.put('/recordatorio/:id', 
+router.get('/recordatorio', getRecordatorios)
+router.get('/recordatorio/:idRecordatorio', getOneRecordatorio)
+router.put('/recordatorio/:idRecordatorio', 
     body('hora').optional().isString(),
     body('repetir').optional().isNumeric(),
     handleInputErrors,
-    (req, res) => {}
+    updateRecordatorio
 )
 router.post('/recordatorio', 
     body('hora').exists().isString(),
     body('repetir').exists().isNumeric(),
     handleInputErrors,
-    (req, res) => {}
+    createRecordatorio
 )
-router.delete('/recordatorio/:id', () => {})
+router.delete('/recordatorio/:idRecordatorio', deleteRecordatorio)
 
 export default router
