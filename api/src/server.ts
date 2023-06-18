@@ -22,7 +22,7 @@ app.use('/api', protect, router)
 app.post('/user',
     body('nombre').isString(),
     body('apellidos').isString(),
-    body('fechaNacimiento').isString().matches(/^\d{2}-\d{2}-\d{4}$/), 
+    body('fechaNacimiento').isString(), 
     body('correo').isEmail(),
     body('telefono').isString().isNumeric(),
     body('contrasenia').isString(),
