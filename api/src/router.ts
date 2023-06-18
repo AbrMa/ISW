@@ -3,6 +3,7 @@ import { body } from 'express-validator'
 import { handleInputErrors } from './modules/middleware'
 import { createMedicamento, deleteMedicamento, getMedicamentos, getOneMedicamento, updateMedicamento } from './handlers/medicamento'
 import { createDieta, deleteDieta, getDietas, getOneDieta, updateDieta } from './handlers/dieta'
+import { createEjercicio, deleteEjercicio, getEjercicios, getOneEjercicio, updateEjercicio } from './handlers/ejercicio'
 
 const router = Router()
 
@@ -16,8 +17,8 @@ router.put('/medicamento/:idMedicamento',
     body('nombre').optional().isString(),
     body('dosis').optional().isString(),
     body('frecuencia').optional().isNumeric(),
-    body('fechaInicio').optional().isString().matches(/^\d{2}-\d{2}-\d{4}$/), 
-    body('fechaFin').optional().isString().matches(/^\d{2}-\d{2}-\d{4}$/), 
+    body('fechaInicio').optional().isString(), 
+    body('fechaFin').optional().isString(), 
     handleInputErrors,
     updateMedicamento
 )
@@ -25,8 +26,8 @@ router.post('/medicamento',
     body('nombre').exists().isString(),
     body('dosis').exists().isString(),
     body('frecuencia').exists().isNumeric(),
-    body('fechaInicio').exists().isString().matches(/^\d{2}-\d{2}-\d{4}$/), 
-    body('fechaFin').exists().isString().matches(/^\d{2}-\d{2}-\d{4}$/), 
+    body('fechaInicio').exists().isString(), 
+    body('fechaFin').exists().isString(), 
     handleInputErrors, 
     createMedicamento
 )
@@ -41,7 +42,7 @@ router.get('/dieta/:idDieta', getOneDieta)
 router.put('/dieta/:idDieta', 
     body('nombre').optional().isString(),
     body('ingredientes').optional().isString(),
-    body('fecha').optional().matches(/^\d{2}-\d{2}-\d{4}$/), 
+    body('fecha').optional(), 
     body('hora').optional(),
     handleInputErrors,
     updateDieta
@@ -49,7 +50,7 @@ router.put('/dieta/:idDieta',
 router.post('/dieta', 
     body('nombre').exists().isString(),
     body('ingredientes').exists().isString(),
-    body('fecha').exists().isString().matches(/^\d{2}-\d{2}-\d{4}$/), 
+    body('fecha').exists().isString(), 
     body('hora').exists().isString(),
     handleInputErrors,
     createDieta
@@ -60,23 +61,23 @@ router.delete('/dieta/:idDieta', deleteDieta)
 * Ejercicio
 */
 
-router.get('/ejercicio', () => {})
-router.get('/ejercicio/:id', () => {})
-router.put('/ejercicio/:id',
+router.get('/ejercicio', getEjercicios)
+router.get('/ejercicio/:idEjercicio', getOneEjercicio)
+router.put('/ejercicio/:idEjercicio',
     body('nombre').optional().isString(),
     body('duracion').optional().isNumeric(),
-    body('fecha').optional().isString().matches(/^\d{2}-\d{2}-\d{4}$/),
+    body('fecha').optional().isString(),
     handleInputErrors,
-    (req, res) => {}
+    updateEjercicio
 )
 router.post('/ejercicio',
     body('nombre').exists().isString(),
     body('duracion').exists().isNumeric(),
-    body('fecha').exists().isString().matches(/^\d{2}-\d{2}-\d{4}$/),
+    body('fecha').exists().isString(),
     handleInputErrors, 
-    () => {}
+    createEjercicio
 )
-router.delete('/ejercicio:id', () => {})
+router.delete('/ejercicio/:idEjercicio', deleteEjercicio)
 
 /*
 * Recordatorio
