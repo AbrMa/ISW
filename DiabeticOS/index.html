@@ -12,15 +12,15 @@
         <div class="form-container">
             <h2 class="bienvenido">Bienvenido</h2>
             <p class="animado">Por favor, inicia sesión</p>
-            <form>
+            <form id="signinForm">
                 <div class="mb-3">
                     <label for="usuario" class="form-label">Correo electrónico:</label>
-                    <input type="text" class="form-control" id="email" name="email" placeholder="Ingresa tu correo electrónico">
+                    <input type="text" class="form-control" id="email" name="correo" placeholder="Ingresa tu correo electrónico">
                 </div>
               
                 <div class="mb-3">
                     <label for="contraseña" class="form-label">Contraseña:</label>
-                    <input type="password" class="form-control" id="contraseña" name="contraseña" placeholder="Ingresa tu contraseña">
+                    <input type="password" class="form-control" id="contraseña" name="contrasenia" placeholder="Ingresa tu contraseña">
                 </div>
                 <button type="button" class="btn btn-primary" onclick="iniciarSesion()">Iniciar sesión</button>
                 <button type="button" class="btn btn-primary" onclick="redireccionarFormulario()">Crear cuenta</button> 
@@ -28,6 +28,50 @@
             </form>
         </div>
     </div>
+
+    <script>
+        function iniciarSesion() {
+            var form = document.getElementById('signinForm');
+            var formData = new FormData(form);
+            var jsonData = {};
+    
+            for (var pair of formData.entries()) {
+                jsonData[pair[0]] = pair[1]; 
+            }
+    
+            fetch('http://localhost:3001/signin', {
+                method: 'POST', 
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(jsonData)
+            })
+            .then(response => {
+                if(response.ok) { // Checking if the response status code is 200
+                    return response.json(); // Parse it as json
+                } else {
+                    throw new Error('Failed to find user');
+                }
+            })
+            .then(data => {
+                // Check if data.token is defined and not null
+                if(data.token) {
+                    // Store token in local storage
+                    localStorage.setItem('token', data.token);
+                    alert('Usuario encontrado');
+    
+                    // Redirect to 'comunidad.html'
+                    window.location.href = 'comunidad.html';
+                }
+            })
+            .catch((error) => {
+                console.error('Error:', error);
+                alert('Usuario no encontrado, por favor revisa tu correo o contraseña');
+            });
+        }
+    </script>
+    
 </body>
 </html>
+
 
