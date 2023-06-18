@@ -5,8 +5,26 @@ import { createMedicamento, deleteMedicamento, getMedicamentos, getOneMedicament
 import { createDieta, deleteDieta, getDietas, getOneDieta, updateDieta } from './handlers/dieta'
 import { createEjercicio, deleteEjercicio, getEjercicios, getOneEjercicio, updateEjercicio } from './handlers/ejercicio'
 import { createRecordatorio, deleteRecordatorio, getOneRecordatorio, getRecordatorios, updateRecordatorio } from './handlers/recordatorios'
+import { deleteUser, updateUser } from './handlers/user'
 
 const router = Router()
+
+/*
+ * Usuario
+ */
+
+router.put('/user',
+    body('nombre').isString(),
+    body('apellidos').isString(),
+    body('fechaNacimiento').isString(), 
+    body('correo').isEmail(),
+    body('telefono').isString().isNumeric(),
+    body('contrasenia').isString(),
+    handleInputErrors,
+    updateUser
+)
+
+router.delete('/user',deleteUser)
 
 /*
 * Medicamento

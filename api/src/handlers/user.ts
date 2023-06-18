@@ -37,3 +37,37 @@ export const signinUser = async (req, res) => {
     const token = createJWT(paciente)
     res.json({ token })
 }
+
+export const updateUser = async (req, res) => {
+    const paciente = await prisma.paciente.update({
+        where: {
+            idPaciente: req.paciente.idPaciente
+            
+        },
+        data: {
+            nombre: req.body.nombre,
+            apellidos: req.body.apellidos,
+            fechaNacimiento: new Date(req.body.fechaNacimiento),
+            correo: req.body.correo,
+            telefono: req.body.telefono,
+            contrasenia: await hashPassword(req.body.contrasenia)
+        }
+    })
+
+    res.json({
+        data: paciente
+    })
+}
+
+export const deleteUser = async (req, res) => {
+    const paciente = await prisma.paciente.delete({
+        where: {
+            idPaciente: req.paciente.idPaciente
+        }
+    })
+
+
+    res.json({
+        data: paciente
+    })
+}
