@@ -86,14 +86,14 @@ router.get('/ejercicio', getEjercicios)
 router.get('/ejercicio/:idEjercicio', getOneEjercicio)
 router.put('/ejercicio/:idEjercicio',
     body('nombre').optional().isString(),
-    body('duracion').optional().isNumeric(),
+    body('duracion').optional().isString(),
     body('fecha').optional().isString(),
     handleInputErrors,
     updateEjercicio
 )
 router.post('/ejercicio',
     body('nombre').exists().isString(),
-    body('duracion').exists().isNumeric(),
+    body('duracion').exists().isString(),
     body('fecha').exists().isString(),
     handleInputErrors, 
     createEjercicio

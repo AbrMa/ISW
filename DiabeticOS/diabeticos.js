@@ -285,28 +285,43 @@ document.addEventListener("DOMContentLoaded", function() {
 function guardarDatosejercicio(event) {
   event.preventDefault();
 
-  // Obtener los valores de los campos del formulario
-  var ejercicio = document.getElementById("ejercicio").value;
-  var tiempo = document.getElementById("tiempo").value;
-  var fecha = document.getElementById("fecha").value;
-  
+  const nombre = document.getElementById('ejercicio').value;
+  const duracion = document.getElementById('tiempo').value;
+  const fecha = document.getElementById('fecha').value;
 
-  // Verificar que todos los campos estén llenos
-  if (ejercicio && tiempo && fecha  ) {
-    // Mostrar el mensaje de éxito
-    var successMessage = document.getElementById("successMessage");
-    successMessage.textContent = "Sus datos se guardaron correctamente.";
-    successMessage.classList.remove("hidden");
+  // Convert date to YYYY-MM-DD format
+  let dateObject = new Date(fecha);
+  let formattedDate = dateObject.toISOString().split('T')[0];
 
-    // Ocultar el mensaje después de 4 segundos
-    setTimeout(function() {
-      successMessage.classList.add("hidden");
-    }, 4000);
+  const ejercicioData = {
+      nombre: nombre,
+      duracion: duracion,
+      fecha: formattedDate
+  };
 
-    // Ocultar formulario y mostrar elementos de las alarmas
-    ocultarFormularioejercicio();
-    mostrarAlarmasejercicio();
-  }
+  // Get token
+  const token = localStorage.getItem('token');
+
+  // Make the POST request
+  fetch('http://localhost:3001/api/ejercicio', {
+      method: 'POST',
+      headers: {
+          'Content-Type': 'application/json',
+          'Authorization': 'Bearer ' + token
+      },
+      body: JSON.stringify(ejercicioData)
+  })
+  .then(response => {
+    if (response.ok) {
+        alert('Usuario ha modificado sus datos');
+    } else {
+        throw new Error('Failed to update user data');
+    }
+  })
+  .catch((error) => {
+      console.error('Error:', error);
+      alert('Datos inválidos');
+  });
 } 
 
 function mostrarFormularioejercicio() {
