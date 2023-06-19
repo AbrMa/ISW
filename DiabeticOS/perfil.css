@@ -176,7 +176,8 @@ body {
   
   .btn-close,
   .btn-ejercicio,
-  .btn-save {
+  .btn-save,
+  .btn-deleteaccount {
     font-family: 'Century Gothic';
     font-size: large;
     font-weight: 500;
@@ -195,7 +196,8 @@ body {
   
   .btn-close:hover,
   .btn-ejercicio:hover,
-  .btn-save:hover{
+  .btn-save:hover,
+  .btn-deleteaccount:hover{
       background-color: #23527c;
       transform: scale(1.1);
     }
