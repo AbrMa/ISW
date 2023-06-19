@@ -50,7 +50,9 @@ export const updateUser = async (req, res) => {
             fechaNacimiento: new Date(req.body.fechaNacimiento),
             correo: req.body.correo,
             telefono: req.body.telefono,
-            contrasenia: await hashPassword(req.body.contrasenia)
+            peso:  parseInt(req.body.peso),
+            altura: parseInt(req.body.altura),
+            tipoDiabetes: req.body.tipoDiabetes
         }
     })
 

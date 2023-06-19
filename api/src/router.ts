@@ -21,7 +21,7 @@ router.put('/user',
     body('fechaNacimiento').isString(), 
     body('correo').isEmail(),
     body('telefono').isString().isNumeric(),
-    body('contrasenia').isString(),
+    body('tipoDiabetes').isString(),
     handleInputErrors,
     updateUser
 )
