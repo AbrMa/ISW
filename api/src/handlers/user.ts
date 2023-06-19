@@ -71,3 +71,16 @@ export const deleteUser = async (req, res) => {
         data: paciente
     })
 }
+
+export const getUser = async (req, res) => {
+    const paciente = await prisma.paciente.findFirst({
+        where: {
+            idPaciente: req.paciente.idPaciente
+        }
+    })
+
+
+    res.json({
+        data: paciente
+    })
+}
