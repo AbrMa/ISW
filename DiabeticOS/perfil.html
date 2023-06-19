@@ -10,12 +10,79 @@
 <body>
   <script>
     document.addEventListener('DOMContentLoaded', (event) => {
-                const token = localStorage.getItem('token');
-                if (!token) {
-                    window.location.href = 'index.html';
+        const token = localStorage.getItem('token');
+        if (!token) {
+            window.location.href = 'index.html';
+        } else {
+            fetch('http://localhost:3001/api/user', {
+                headers: {
+                    'Authorization': `Bearer ${token}` // Add token to request headers
                 }
+            })
+            .then(response => response.json())
+            .then(data => {
+                const userData = data.data;
+                document.getElementById('nombre').value = userData.nombre || "";
+                document.getElementById('apellidos').value = userData.apellidos || "";
+                document.getElementById('correo').value = userData.correo || "";
+                document.getElementById('telefono').value = userData.telefono || "";
+    
+                if (userData.fechaNacimiento) {
+                    const birthDate = new Date(userData.fechaNacimiento);
+                    document.getElementById('fechaNacimiento').value = birthDate.toISOString().split('T')[0];
+                }
+    
+                document.getElementById('peso').value = userData.peso || "";
+                document.getElementById('altura').value = userData.altura || "";
+    
+                if (userData.tipoDiabetes) {
+                    document.getElementById('tipoDiabetes').value = userData.tipoDiabetes;
+                }
+            })
+            .catch((error) => {
+                console.error('Error:', error);
             });
+        }
+    
+        const userForm = document.getElementById('userForm');
+        userForm.addEventListener('submit', (event) => {
+            event.preventDefault();
+    
+            const formData = new FormData(userForm);
+            const jsonData = {};
+            for (let [key, value] of formData) {
+                // Convert "peso" and "altura" values to int
+                if (key === "peso" || key === "altura") {
+                    value = parseInt(value, 10);
+                }
+                jsonData[key] = value;
+            }
+    
+            fetch('http://localhost:3001/api/user', {
+                method: 'PUT',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Authorization': `Bearer ${token}` // Add token to request headers
+                },
+                body: JSON.stringify(jsonData)
+            })
+            .then(response => {
+                if (response.ok) {
+                    alert('Usuario ha modificado sus datos');
+                } else {
+                    throw new Error('Failed to update user data');
+                }
+            })
+            .catch((error) => {
+                console.error('Error:', error);
+                alert('Datos inválidos');
+            });
+        });
+    });
   </script>
+    
+    
+    
   <div class="container">
     <div class="header">
       <img src="Profile_photo\foto.jpg" alt="Foto de perfil" class="profile-photo">
