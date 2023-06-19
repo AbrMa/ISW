@@ -8,6 +8,14 @@
   <script src="diabeticos.js"></script>  <!-- Ruta al archivo JS -->
 </head>
 <body>
+  <script>
+document.addEventListener('DOMContentLoaded', (event) => {
+            const token = localStorage.getItem('token');
+            if (!token) {
+                window.location.href = 'index.html';
+            }
+        });
+  </script>
   <div class="container">
     <div class="header">
       <img src="Profile_photo\foto.jpg" alt="Foto de perfil" class="profile-photo">

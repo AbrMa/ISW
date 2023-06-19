@@ -48,7 +48,11 @@ function iniciarSesion() {
 
 //Esta funcion soo redirecciona a inicio
 function cerrarSesion() {
-  window.location.href = "index.html";
+  // Remove token from local storage
+  localStorage.removeItem('token');
+      
+  // Redirect to 'index.html'
+  window.location.href = 'index.html';
 }
 
 //Formulario de crear cuenta
