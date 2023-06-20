@@ -62,7 +62,6 @@ router.get('/dieta', getDietas)
 router.get('/dieta/:idDieta', getOneDieta)
 router.put('/dieta/:idDieta', 
     body('nombre').optional().isString(),
-    body('ingredientes').optional().isString(),
     body('fecha').optional(), 
     body('hora').optional(),
     handleInputErrors,
@@ -70,7 +69,6 @@ router.put('/dieta/:idDieta',
 )
 router.post('/dieta', 
     body('nombre').exists().isString(),
-    body('ingredientes').exists().isString(),
     body('fecha').exists().isString(), 
     body('hora').exists().isString(),
     handleInputErrors,
