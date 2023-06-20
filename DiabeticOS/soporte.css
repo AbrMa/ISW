@@ -129,33 +129,6 @@ body {
     margin-top: 10px;
   }
   
-  form {
-    background-image: url("Iconos/fondoheader.png");
-    font-family: 'Century Gothic';
-    font-weight: 1000;
-    color: #000;
-    max-width: 250px;
-    margin: auto;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    margin-top: auto;
-  }
-  
-  input,
-  select {
-    font-family: 'Century Gothic';
-    font-weight: 1000;
-    font-size: large;
-    margin: 0;
-    display: block;
-    width: 50%;
-    padding: 10px;
-    margin-bottom: 10px;
-    align-items: center;
-    border-radius: 53px;
-    background-color: #ccc;
-  }
   
   .btn-close, 
   .btn-alarm,
@@ -184,7 +157,8 @@ body {
   .btn-alarm:hover,
   .btn-edit:hover,
   .btn-delete:hover,
-  .btn-support:hover{
+  .btn-support:hover,
+  .support-form button:hover{
     background-color: #23527c;
     transform: scale(1.1);
   }
@@ -193,10 +167,6 @@ body {
     display: none;
   }
   
-  form {
-    margin-top: 20px;
-    border-radius: 12px;
-  }
   
   label {
     display: block;
@@ -204,12 +174,7 @@ body {
     color: #fff;
   }
   
-  input,
-  select {
-    margin-bottom: 10px;
-    text-align: center;
-    font-size: small;
-  }
+
   
   button[type='submit'] {
     margin-top: 10px;
@@ -223,41 +188,67 @@ body {
     text-align: center;
   }
   
-  .alarms-container {
+  .support-form {
+    font-family: 'Century Gothic';
+    max-width: 400px;
+    margin: 0 auto;
+    padding: 20px;
+    background-image: url('Iconos/fondoall.png');
+    border: 1px solid #ddd;
+    border-radius: 5px;
+  }
+  
+  .support-form h2 {
+    text-align: center;
+    margin-bottom: 20px;
+    color:#fff;
+  }
+  
+  .support-form form {
     display: flex;
     flex-direction: column;
-    align-items: center;
   }
   
-  .alarm-box {
-    font-family: 'Century Gothic';
-    background-color: #7f0909;
-    width: 300px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
+  .support-form label {
+    margin-bottom: 10px;
+    color:#fff;
+  }
+  
+  .support-form input,
+  .support-form textarea {
     padding: 10px;
-    margin-bottom: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #ddd;
+    border-radius: 3px;
   }
   
-  .alarm-details {
-    margin-bottom: 10px;
+  .support-form textarea {
+    height: 150px;
+  }
+  
+  .support-form button[type="submit"] {
+    padding: 10px;
+    background-color: #337ab7;
     color: #fff;
+    border: none;
+    border-radius: 3px;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.3s;
   }
   
-  .alarm-time {
-    font-weight: bold;
-    color: #fff;
+  .support-form button[type="submit"]:hover {
+    background-color: #23527c;
   }
-  
-  .alarm-repeat {
-    color: #fff;
+
+  .success-message {
+    display: none;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: #008000;
+    color: #ffffff;
+    padding: 20px;
+    border-radius: 5px;
+    z-index: 9999;
   }
-  
-  .alarm-medication {
-    font-style: italic;
-  }
-  
-  .alarm-actions {
-    text-align: right;
-  }
-  
