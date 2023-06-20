@@ -1,0 +1,7 @@
+-- AlterTable
+ALTER TABLE "Medicamento" ADD COLUMN     "hora" TEXT,
+ADD COLUMN     "repetir" TEXT,
+ALTER COLUMN "dosis" DROP NOT NULL,
+ALTER COLUMN "fechaInicio" DROP NOT NULL,
+ALTER COLUMN "fechaFin" DROP NOT NULL,
+ALTER COLUMN "frecuencia" DROP NOT NULL;

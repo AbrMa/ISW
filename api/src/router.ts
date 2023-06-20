@@ -36,19 +36,15 @@ router.get('/medicamento', getMedicamentos)
 router.get('/medicamento/:idMedicamento', getOneMedicamento)
 router.put('/medicamento/:idMedicamento',
     body('nombre').optional().isString(),
-    body('dosis').optional().isString(),
-    body('frecuencia').optional().isNumeric(),
-    body('fechaInicio').optional().isString(), 
-    body('fechaFin').optional().isString(), 
+    body('repetir').optional().isString(),
+    body('hora').optional().isString(),
     handleInputErrors,
     updateMedicamento
 )
 router.post('/medicamento',
     body('nombre').exists().isString(),
-    body('dosis').exists().isString(),
-    body('frecuencia').exists().isNumeric(),
-    body('fechaInicio').exists().isString(), 
-    body('fechaFin').exists().isString(), 
+    body('repetir').exists().isString(),
+    body('hora').exists().isString(),
     handleInputErrors, 
     createMedicamento
 )

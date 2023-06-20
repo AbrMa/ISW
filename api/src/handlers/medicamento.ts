@@ -34,10 +34,8 @@ export const createMedicamento = async (req, res) => {
     const medicamento = await prisma.medicamento.create({
         data: {
             nombre: req.body.nombre,
-            dosis: req.body.dosis,
-            frecuencia: req.body.frecuencia,
-            fechaInicio: new Date(req.body.fechaInicio),
-            fechaFin: new Date(req.body.fechaFin),
+            repetir: req.body.repetir,
+            hora: req.body.hora,
             idPaciente: req.paciente.idPaciente
         }
     })
@@ -57,10 +55,8 @@ export const updateMedicamento = async (req, res) => {
         },
         data: {
             nombre: req.body.nombre,
-            dosis: req.body.dosis,
-            frecuencia: req.body.frecuencia,
-            fechaInicio: new Date(req.body.fechaInicio),
-            fechaFin: new Date(req.body.fechaFin),
+            repetir: req.body.repetir,
+            hora: req.body.hora,
             idPaciente: req.paciente.idPaciente
         }
     })
