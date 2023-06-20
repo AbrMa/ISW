@@ -268,25 +268,6 @@ async function guardarDatosalimento(event) {
   }
 }
 
-function mostrarFormularioalimento() {
-  var formulariodieta = document.getElementById("formAgregarAlimento");
-  formulariodieta.classList.remove("hidden");
-
-  // Ocultar elementos de las alarmas
-  var dietsContainer = document.getElementById("dietsContainer");
-  dietsContainer.style.display = "none";
-}
-
-function ocultarFormularioalimento() {
-  var formulario = document.getElementById("formAgregarAlimento");
-  formulario.classList.add("hidden");
-}
-
-function mostrarAlarmasalimento() {
-  var dietsContainer = document.getElementById("dietsContainer");
-  dietsContainer.style.display = "block";
-}
-
 
 //Formulario ejercicio
 document.addEventListener("DOMContentLoaded", function() {
@@ -359,3 +340,26 @@ function mostrarAlarmasejercicio(){
   var dietsContainer = document.getElementById("ExerciseTable");
   dietsContainer.style.display = "block";
 }
+
+
+function mostrarFormularioalimento() {
+  var formularioalimento = document.getElementById("formAgregarAlimento");
+  formularioalimento.classList.remove("hidden");
+
+  // Ocultar elementos de las alarmas
+  var dietsContainer = document.getElementById("DietsTable");
+  dietsContainer.style.display = "none";
+}
+
+function ocultarFormularioalimento() {
+  var formulario = document.getElementById("formAgregarAlimento");
+  formulario.classList.add("hidden");
+}
+
+function mostrarAlarmasalimento(){
+  var dietsContainer = document.getElementById("DietsTable");
+  dietsContainer.style.display = "block";
+}
+
+
+
