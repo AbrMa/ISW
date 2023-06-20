@@ -9,7 +9,7 @@ export const getDietas = async (req, res) => {
             dietas: true
         }
     })
-
+    
     res.json({
         data: paciente.dietas
     })
