@@ -54,16 +54,19 @@
           cell2.innerText = data[i].nombre;
 
           let cell3 = newRow.insertCell(3);
-          cell3.innerText = `${data[i].duracion} minutos`;
+          cell3.innerText = `${data[i].duracion}`;
 
           let cell4 = newRow.insertCell(4);
-          cell4.innerText = new Date(data[i].fecha).toLocaleDateString();
+          let date = new Date(data[i].fecha);
+          let formattedDate = `${date.getFullYear()}-${date.getMonth()+1}-${date.getDate()}`; // Date formatted as YYYY-MM-DD
+          cell4.innerText = formattedDate;
 
           let cell5 = newRow.insertCell(5);
           let imgEdit = document.createElement('img');
           imgEdit.src = "Iconos/edit.png";
           imgEdit.alt = "Foto del ejercicio";
           imgEdit.classList.add("edit-image");
+          imgEdit.addEventListener('click', editExercise);
           cell5.appendChild(imgEdit);
 
           let cell6 = newRow.insertCell(6);
@@ -73,6 +76,52 @@
           imgDelete.classList.add("delete-image");
           imgDelete.addEventListener('click', deleteExercise);
           cell6.appendChild(imgDelete);
+        }
+      } catch (err) {
+        console.log('Error: ', err);
+      }
+    }
+
+    function editExercise(event) {
+      const row = event.target.parentNode.parentNode;
+      const img = event.target;
+      img.src = "Iconos/aceptar.jpg";
+      img.addEventListener('click', saveExercise);
+
+      for (let i = 1; i < row.cells.length - 2; i++) {
+        row.cells[i].contentEditable = true;
+      }
+    }
+
+    async function saveExercise(event) {
+      const row = event.target.parentNode.parentNode;
+      const idCell = row.cells[0];
+      const id = idCell.textContent;
+
+      const url = "http://localhost:3001/api/ejercicio/" + id;
+
+      const token = localStorage.getItem('token');
+
+      const updatedData = {
+        nombre: row.cells[2].innerText,
+        duracion: row.cells[3].innerText,
+        fecha: row.cells[4].innerText
+      };
+
+      try {
+        const response = await fetch(url, {
+          method: 'PUT',
+          headers: {
+            'Authorization': 'Bearer ' + token,
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify(updatedData)
+        });
+
+        if (!response.ok) {
+          throw new Error(`HTTP error! status: ${response.status}`);
+        } else {
+          fetchExerciseData(); // Re-fetch the data to refresh the table
         }
       } catch (err) {
         console.log('Error: ', err);
