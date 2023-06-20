@@ -223,33 +223,45 @@ document.addEventListener("DOMContentLoaded", function() {
 });
 
 //Mensaje de alimento agregado
-function guardarDatosalimento(event) {
+async function guardarDatosalimento(event) {
   event.preventDefault();
 
-  // Obtener los valores de los campos del formulario
-  var alimento = document.getElementById("alimento").value;
-  var unidad = document.getElementById("unidad").value;
-  var hora = document.getElementById("hora").value;
-  var fecha = document.getElementById("fecha").value;
-  var cantidad = document.getElementById("cantidad").value;
+  const nombre = document.getElementById('alimento').value;
+  const cantidad = document.getElementById('cantidad').value;
+  const unidad = document.getElementById('unidad').value;
+  const hora = document.getElementById('hora').value;
+  const fecha = document.getElementById('fecha').value;
 
-  // Verificar que todos los campos estén llenos
-  if (alimento && unidad && hora && fecha && cantidad ) {
-    // Mostrar el mensaje de éxito
-    var successMessage = document.getElementById("successMessage");
-    successMessage.textContent = "Sus datos se guardaron correctamente.";
-    successMessage.classList.remove("hidden");
+  const data = {
+    nombre: nombre,
+    cantidad: cantidad,
+    unidad: unidad,
+    hora: hora,
+    fecha: fecha
+  };
 
-    // Ocultar el mensaje después de 4 segundos
-    setTimeout(function() {
-      successMessage.classList.add("hidden");
-    }, 4000);
+  const token = localStorage.getItem('token');
 
-    // Ocultar formulario y mostrar elementos de las alarmas
-    ocultarFormularioalimento();
-    mostrarAlarmasalimento();
+  try {
+    const response = await fetch('http://localhost:3001/api/dieta', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'Authorization': `Bearer ${token}`
+      },
+      body: JSON.stringify(data)
+    });
+
+    if (response.ok) {
+      alert('Nueva dieta agregada')
+      // Add code here to update the UI or perform any additional actions
+    } else {
+      throw new Error('Error: ' + response.status);
+    }
+  } catch (error) {
+    alert('Datos incorrectos')
   }
-} 
+}
 
 function mostrarFormularioalimento() {
   var formulariodieta = document.getElementById("formAgregarAlimento");
