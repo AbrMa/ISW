@@ -31,10 +31,12 @@ model Paciente {
 model Medicamento {
   idMedicamento String         @id @default(uuid())
   nombre        String
-  dosis         String
-  frecuencia    Int
-  fechaInicio   DateTime
-  fechaFin      DateTime
+  repetir String ? 
+  hora String ? 
+  dosis         String ?
+  frecuencia    Int ?
+  fechaInicio   DateTime ?
+  fechaFin      DateTime ? 
   idPaciente    String
   paciente      Paciente      @relation(fields: [idPaciente], references: [idPaciente])
   Recordatorio  Recordatorio[]
@@ -66,7 +68,7 @@ model Ejercicio {
 
 model Recordatorio {
   idRecordatorio String      @id @default(uuid())
-  hora           DateTime
+  hora           DateTime 
   repetir        Int
   idMedicamento  String
   medicamento    Medicamento @relation(fields: [idMedicamento], references: [idMedicamento])

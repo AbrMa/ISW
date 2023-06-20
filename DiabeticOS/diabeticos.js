@@ -172,31 +172,46 @@ document.addEventListener("DOMContentLoaded", function() {
 });
 
 //Mensaje de alarma agregada
-function guardarDatosmedicamento(event) {
-  event.preventDefault();
+async function guardarDatosmedicamento(event) {
+  event.preventDefault(); // Evitar el envío del formulario por defecto
 
-  // Obtener los valores de los campos del formulario
-  var hora = document.getElementById("hora").value;
-  var repetir = document.getElementById("repetir").value;
-  var medicamento = document.getElementById("medicamento").value;
+  console.log('hello')
 
-  // Verificar que todos los campos estén llenos
-  if (hora && repetir && medicamento) {
-    // Mostrar el mensaje de éxito
-    var successMessage = document.getElementById("successMessage");
-    successMessage.textContent = "Sus datos se guardaron correctamente.";
-    successMessage.classList.remove("hidden");
+  const token = localStorage.getItem('token');
+  const hora = document.getElementById('hora').value;
+  const repetir = document.getElementById('repetir').value;
+  const medicamento = document.getElementById('medicamento').value;
 
-    // Ocultar el mensaje después de 4 segundos
-    setTimeout(function() {
-      successMessage.classList.add("hidden");
-    }, 4000);
+  // Crear objeto para enviar en la solicitud POST
+  const data = {
+    hora: hora,
+    repetir: repetir,
+    nombre: medicamento
+  };
 
-    // Ocultar formulario y mostrar elementos de las alarmas
-    ocultarFormulariomedicamento();
-    mostrarAlarmasmedicamento();
+  try {
+    // Configurar la solicitud POST
+    const response = await fetch('http://localhost:3001/api/medicamento', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'Authorization': `Bearer ${token}`
+      },
+      body: JSON.stringify(data)
+    });
+
+    if (response.ok) {
+      alert('Alarma registrada');
+      window.location.href = 'alertas.html'; // Redirigir a alertas.html
+    } else {
+      throw new Error('Error en la solicitud');
+    }
+  } catch (error) {
+    alert('Datos no válidos');
+    console.error(error);
   }
 }
+
 
 function mostrarFormulariomedicamento() {
   var formulario = document.getElementById("formAgregarAlarma");

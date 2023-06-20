@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Alimentación</title>
+  <link rel="icon" href="Iconos/icon.png" type="png">
+  <link rel="stylesheet" href="dieta.css"> <!-- Ruta al archivo CSS -->
+  <link rel="stylesheet" href="ejercicio.css">
+  <script src="diabeticos.js"></script>  <!-- Ruta al archivo JS -->
+</head>
+<body>
+  <script>
+document.addEventListener('DOMContentLoaded', async (event) => {
+  const token = localStorage.getItem('token');
+  if (!token) {
+    window.location.href = 'index.html';
+  }
+
+  try {
+    const response = await fetch('http://localhost:3001/api/medicamento', {
+      headers: {
+        'Authorization': `Bearer ${token}`
+      }
+    });
+
+    if (!response.ok) {
+      throw new Error('Error en la solicitud');
+    }
+
+    const data = await response.json();
+    const table = document.getElementById('MedicamentosTable');
+
+    // Clear existing rows
+    table.innerHTML = '';
+
+    // Call the function to create rows
+    await createTableRows(data, table);
+  } catch (error) {
+    console.error(error);
+  }
+});
+
+async function createTableRows(data, table) {
+  for (let i = 0; i < data.length; i++) {
+    const medicamento = data[i];
+
+    const row = document.createElement('tr');
+
+    const nameCell = document.createElement('td');
+    nameCell.textContent = medicamento.nombre;
+    row.appendChild(nameCell);
+
+    const horaCell = document.createElement('td');
+    horaCell.textContent = medicamento.hora;
+    row.appendChild(horaCell);
+
+    const repeatCell = document.createElement('td');
+    repeatCell.textContent = medicamento.repetir;
+    row.appendChild(repeatCell);
+
+    table.appendChild(row);
+  }
+}
+  </script>
+  <div class="container">
+    <!-- Existing code... -->
+    <div class="content">
+      <table class="medicamento-table" id="MedicamentosTable">
+        <thead>
+          <tr>
+            <th>Nombre</th>
+            <th>Hora</th>
+            <th>Repetir</th>
+          </tr>
+        </thead>
+        <tbody>
+        </tbody>
+      </table>
+    </div>
+    <!-- Existing code... -->
+  </div>
+  <div class="footer">
+    <!-- Existing code... -->
+  </div>
+  <script src="diabeticos.js"></script>  
+</body>
+</html>
