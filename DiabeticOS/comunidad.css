@@ -162,7 +162,7 @@ body{
   box-sizing: border-box;
   cursor: pointer;
   border-radius: 3%;
-  background-color: #0b0e50;
+  background-image: url("Iconos/fondoall.png");
   box-shadow: 0 2px 4px rgba(0, 0, 0, .5);
   transition: transform 0.3s ease;
   
@@ -202,6 +202,7 @@ body{
 
 button
 {
+  cursor: pointer;
   font-family: 'Century Gothic';
   font-size: large;
   font-weight: 500;

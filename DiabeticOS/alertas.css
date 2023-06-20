@@ -16,7 +16,7 @@ body {
 .header {
   font-family: 'Century Gothic';
   font-weight: 200;
-  color: #ffffff;
+  color: #fff;
   background-image: url(Iconos/fondoheader.png);
   display: flex;
   align-items: center;
@@ -108,8 +108,8 @@ body {
 .title {
   width: 50%;
   text-align: center;
-  margin-top: 0px;
-  color: #ffffff;
+  margin-top: 0;
+  color: #fff;
   font-family: 'Century Gothic';
   font-size: xx-large;
   font-weight: 1000;
@@ -123,14 +123,14 @@ body {
 #clock {
   font-family: 'Century Gothic';
   font-size: 20px;
-  color: #ffffff;
+  color: #fff;
   background-color: #f2f2f200;
   padding: 10px;
   margin-top: 10px;
 }
 
 form {
-  background-color: #0b0e50;
+  background-image: url("Iconos/fondoheader.png");
   font-family: 'Century Gothic';
   font-weight: 1000;
   color: #000;
@@ -154,14 +154,16 @@ select {
   margin-bottom: 10px;
   align-items: center;
   border-radius: 53px;
-  background-color: #cccccc;
+  background-color: #ccc;
 }
 
 .btn-close, 
 .btn-alarm,
 .btn-save,
 .btn-edit,
-.btn-delete{
+.btn-delete,
+.btn-support {
+  cursor: pointer;
   font-family: 'Century Gothic';
   font-size: large;
   font-weight: 500;
@@ -177,10 +179,12 @@ select {
   transition: background-color 0.3s, transform 0.3s;
 }
 
+.btn-close:hover,
 .btn-save:hover,
 .btn-alarm:hover,
 .btn-edit:hover,
-.btn-delete:hover{
+.btn-delete:hover,
+.btn-support:hover{
   background-color: #23527c;
   transform: scale(1.1);
 }
@@ -214,7 +218,7 @@ button[type='submit'] {
 #successMessage {
   font-family: 'Century Gothic';
   background-color: #008807;
-  color: #ffffff;
+  color: #fff;
   padding: 10px;
   text-align: center;
 }
@@ -237,16 +241,16 @@ button[type='submit'] {
 
 .alarm-details {
   margin-bottom: 10px;
-  color: #ffffff;
+  color: #fff;
 }
 
 .alarm-time {
   font-weight: bold;
-  color: #ffffff;
+  color: #fff;
 }
 
 .alarm-repeat {
-  color: #ffffff;
+  color: #fff;
 }
 
 .alarm-medication {
@@ -256,5 +260,3 @@ button[type='submit'] {
 .alarm-actions {
   text-align: right;
 }
-
-  

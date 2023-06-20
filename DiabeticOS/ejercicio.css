@@ -178,7 +178,9 @@ body {
   
   .btn-close,
   .btn-ejercicio,
-  .btn-save {
+  .btn-save,
+  .btn-support {
+    cursor: pointer;
     font-family: 'Century Gothic';
     font-size: large;
     font-weight: 500;
@@ -197,7 +199,8 @@ body {
   
   .btn-close:hover,
   .btn-ejercicio:hover,
-  .btn-save:hover{
+  .btn-save:hover,
+  .btn-support:hover{
       background-color: #23527c;
       transform: scale(1.1);
     }
@@ -268,6 +271,7 @@ body {
   }
   
   .btn-edit {
+    cursor: pointer;
     font-family: 'Century Gothic';
     font-size: large;
     font-weight: 500;
@@ -337,6 +341,7 @@ body {
       height: 50px;
       border-radius:0;
       transition: transform 0.3s;
+      cursor: pointer;
     }
 
   .edit-image:hover, 

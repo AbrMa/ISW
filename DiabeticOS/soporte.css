@@ -1,12 +1,13 @@
 body {
-    background-image: url(Iconos/fondoperfil.png);
+    background-image: url(Iconos/fondoalerta.png);
     background-position: center;
     background-origin: content-box;
     animation: animateBackground 120s linear infinite;
   }
   
   .container {
-    min-height: 100vh;
+    width: 100%;
+    height: 100vh;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
@@ -15,7 +16,7 @@ body {
   .header {
     font-family: 'Century Gothic';
     font-weight: 200;
-    color: #ffffff;
+    color: #fff;
     background-image: url(Iconos/fondoheader.png);
     display: flex;
     align-items: center;
@@ -29,8 +30,6 @@ body {
   }
   
   .footer {
-    height: auto;
-    width: auto;
     position: sticky;
     bottom: 0;
     background-color: #0b0e50;
@@ -97,18 +96,6 @@ body {
     }
   }
   
-  @keyframes floatAnimation {
-    0% {
-      transform: translateY(0);
-    }
-    50% {
-      transform: translateY(-10px);
-    }
-    100% {
-      transform: translateY(0);
-    }
-  }
-  
   .content {
     animation: animacionFondo 1s ease-in-out forwards;
     padding: 5px;
@@ -121,8 +108,8 @@ body {
   .title {
     width: 50%;
     text-align: center;
-    margin: 0;
-    color: #ffffff;
+    margin-top: 0;
+    color: #fff;
     font-family: 'Century Gothic';
     font-size: xx-large;
     font-weight: 1000;
@@ -136,18 +123,14 @@ body {
   #clock {
     font-family: 'Century Gothic';
     font-size: 20px;
-    color: #ffffff;
+    color: #fff;
     background-color: #f2f2f200;
     padding: 10px;
     margin-top: 10px;
   }
   
-  label {
-    color: #fff;
-  }
-  
   form {
-    background-color: #0b0e50;
+    background-image: url("Iconos/fondoheader.png");
     font-family: 'Century Gothic';
     font-weight: 1000;
     color: #000;
@@ -166,19 +149,20 @@ body {
     font-size: large;
     margin: 0;
     display: block;
-    width: auto;
+    width: 50%;
     padding: 10px;
     margin-bottom: 10px;
     align-items: center;
     border-radius: 53px;
-    background-color: #cccccc;
+    background-color: #ccc;
   }
   
-  .btn-close,
-  .btn-ejercicio,
+  .btn-close, 
+  .btn-alarm,
   .btn-save,
-  .btn-deleteaccount,
-  .btn-support{
+  .btn-edit,
+  .btn-delete,
+  .btn-support {
     cursor: pointer;
     font-family: 'Century Gothic';
     font-size: large;
@@ -195,24 +179,29 @@ body {
     transition: background-color 0.3s, transform 0.3s;
   }
   
-  
   .btn-close:hover,
-  .btn-ejercicio:hover,
   .btn-save:hover,
-  .btn-deleteaccount:hover,
+  .btn-alarm:hover,
+  .btn-edit:hover,
+  .btn-delete:hover,
   .btn-support:hover{
-      background-color: #23527c;
-      transform: scale(1.1);
-    }
-
+    background-color: #23527c;
+    transform: scale(1.1);
+  }
   
   .hidden {
     display: none;
   }
   
+  form {
+    margin-top: 20px;
+    border-radius: 12px;
+  }
+  
   label {
     display: block;
     margin-bottom: 5px;
+    color: #fff;
   }
   
   input,
@@ -229,101 +218,46 @@ body {
   #successMessage {
     font-family: 'Century Gothic';
     background-color: #008807;
-    color: #ffffff;
+    color: #fff;
     padding: 10px;
     text-align: center;
   }
   
-  
-  .exercise-table {
-      width: 100px;
-      height: 100px;
-      border-radius:0;
-    }
-    .exercise-image {
-      width: 50x;
-      height: 50px;
-      border-radius:0;
-    }
-
-  .edit-image,
-  .delete-image {
-      width: 50px;
-      height: 50px;
-      border-radius:0;
-      transition: transform 0.3s;
-    }
-
-  .edit-image:hover, 
-  .delete-image:hover{
-    transform: scale(1.1);
-  }
-
-  form{
-    margin-top: 20px;
-    border-radius: 10px;
-  }
-
-  
-  .content h2 {
-    color: #fff;
-    font-family: 'Century Gothic';
-    font-size: xx-large;
-    font-weight: 1000;
-    margin-bottom: 20px;
-  }
-  
-  #userForm {
-    background-image: url(Iconos/fondoheader.png);
-    font-family: 'Century Gothic';
-    font-weight: 1000;
-    color: #000;
-    max-width: 250px;
-    margin: auto;
+  .alarms-container {
     display: flex;
     flex-direction: column;
     align-items: center;
-    margin-top: auto;
-    padding: 20px;
-    border-radius: 10px;
   }
   
-  #userForm label {
+  .alarm-box {
+    font-family: 'Century Gothic';
+    background-color: #7f0909;
+    width: 300px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    padding: 10px;
+    margin-bottom: 10px;
+  }
+  
+  .alarm-details {
+    margin-bottom: 10px;
     color: #fff;
   }
   
-  #userForm input,
-  #userForm select {
-    font-family: 'Century Gothic';
-    font-weight: 1000;
-    font-size: large;
-    margin: 0;
-    display: block;
-    width: auto;
-    padding: 10px;
-    margin-bottom: 10px;
-    align-items: center;
-    border-radius: 53px;
-    background-color: #cccccc;
-  }
-  
-  #userForm .btn-save {
-    font-family: 'Century Gothic';
-    font-size: large;
-    font-weight: 500;
-    display: flex;
-    margin: 0;
-    width: auto;
-    padding: 10px;
-    margin-bottom: 10px;
-    background-color: #337ab7;
+  .alarm-time {
+    font-weight: bold;
     color: #fff;
-    border-radius: 4px;
-    padding: 8px 16px;
-    transition: background-color 0.3s, transform 0.3s;
   }
   
-  #userForm .btn-save:hover {
-    background-color: #23527c;
-    transform: scale(1.1);
+  .alarm-repeat {
+    color: #fff;
   }
+  
+  .alarm-medication {
+    font-style: italic;
+  }
+  
+  .alarm-actions {
+    text-align: right;
+  }
+  

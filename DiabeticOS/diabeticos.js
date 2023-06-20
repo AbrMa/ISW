@@ -34,14 +34,14 @@ function iniciarSesion() {
   var contraseña = document.getElementById("contraseña").value;
 
   if (email === '' || contraseña === '') {
-    mostrarMensaje("Por favor, ingresa tu correo y contraseña.\n");
+    mostrarMensaje("Por favor, ingresa tu correo y contraseña.");
     return;
   }
 
   if (email === 'jairivansalas@gmail.com' && contraseña === '1234') {
     mostrarMensaje("Inicio de sesión exitoso. ¡Bienvenido!");
   } else {
-    mostrarMensaje("Credenciales inválidas. Por favor, intenta nuevamente.\n");
+    mostrarMensaje("Credenciales inválidas. Por favor, intenta nuevamente.");
   }
 }
 
@@ -49,6 +49,11 @@ function iniciarSesion() {
 //Esta funcion soo redirecciona a inicio
 function cerrarSesion() {
   window.location.href = "index.html";
+}
+
+//Esta funcion solo direcciona al soporte técnico
+function Soporte(){
+  window.location.href = "soporte.html"
 }
 
 //Formulario de crear cuenta

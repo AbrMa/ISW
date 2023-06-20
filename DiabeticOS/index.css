@@ -27,7 +27,7 @@
     width: 100%;
     max-width: 400px;
     padding: 20px;
-    background-color: #0b0e50;
+    background-image: url(Iconos/fondoheader.png);
     border-radius: 50px;
     animation: fadeIn 1s;   
 }
