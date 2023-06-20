@@ -5,7 +5,7 @@ import { createMedicamento, deleteMedicamento, getMedicamentos, getOneMedicament
 import { createDieta, deleteDieta, getDietas, getOneDieta, updateDieta } from './handlers/dieta'
 import { createEjercicio, deleteEjercicio, getEjercicios, getOneEjercicio, updateEjercicio } from './handlers/ejercicio'
 import { createRecordatorio, deleteRecordatorio, getOneRecordatorio, getRecordatorios, updateRecordatorio } from './handlers/recordatorios'
-import { deleteUser, updateUser } from './handlers/user'
+import { deleteUser, getUser, updateUser } from './handlers/user'
 
 const router = Router()
 
@@ -13,13 +13,15 @@ const router = Router()
  * Usuario
  */
 
+router.get('/user', getUser)
+
 router.put('/user',
     body('nombre').isString(),
     body('apellidos').isString(),
     body('fechaNacimiento').isString(), 
     body('correo').isEmail(),
     body('telefono').isString().isNumeric(),
-    body('contrasenia').isString(),
+    body('tipoDiabetes').isString(),
     handleInputErrors,
     updateUser
 )
@@ -60,7 +62,6 @@ router.get('/dieta', getDietas)
 router.get('/dieta/:idDieta', getOneDieta)
 router.put('/dieta/:idDieta', 
     body('nombre').optional().isString(),
-    body('ingredientes').optional().isString(),
     body('fecha').optional(), 
     body('hora').optional(),
     handleInputErrors,
@@ -68,7 +69,6 @@ router.put('/dieta/:idDieta',
 )
 router.post('/dieta', 
     body('nombre').exists().isString(),
-    body('ingredientes').exists().isString(),
     body('fecha').exists().isString(), 
     body('hora').exists().isString(),
     handleInputErrors,
@@ -84,14 +84,14 @@ router.get('/ejercicio', getEjercicios)
 router.get('/ejercicio/:idEjercicio', getOneEjercicio)
 router.put('/ejercicio/:idEjercicio',
     body('nombre').optional().isString(),
-    body('duracion').optional().isNumeric(),
+    body('duracion').optional().isString(),
     body('fecha').optional().isString(),
     handleInputErrors,
     updateEjercicio
 )
 router.post('/ejercicio',
     body('nombre').exists().isString(),
-    body('duracion').exists().isNumeric(),
+    body('duracion').exists().isString(),
     body('fecha').exists().isString(),
     handleInputErrors, 
     createEjercicio

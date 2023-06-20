@@ -44,9 +44,11 @@ model Medicamento {
 model Dieta {
   idDieta      String    @id @default(uuid())
   nombre       String
-  ingredientes String
+  ingredientes String?
   fecha        DateTime
   hora         String
+  cantidad String?
+  unidad String?
   idPaciente   String
   paciente     Paciente @relation(fields: [idPaciente], references: [idPaciente])
   @@unique([idDieta, idPaciente])

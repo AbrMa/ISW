@@ -8,6 +8,15 @@
     <script src="diabeticos.js"></script>  <!-- Ruta al archivo JS -->
 </head>
 <body>
+    <script>
+        // Check if a token exists in local storage and redirect to 'comunidad.html' if it does
+        document.addEventListener('DOMContentLoaded', (event) => {
+            const token = localStorage.getItem('token');
+            if (token) {
+                window.location.href = 'comunidad.html';
+            }
+        });
+    </script>
     <div class="container">
         <div class="form-container">
             <h2 class="bienvenido">Bienvenido</h2>

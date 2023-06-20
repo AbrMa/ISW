@@ -50,7 +50,9 @@ export const updateUser = async (req, res) => {
             fechaNacimiento: new Date(req.body.fechaNacimiento),
             correo: req.body.correo,
             telefono: req.body.telefono,
-            contrasenia: await hashPassword(req.body.contrasenia)
+            peso:  parseInt(req.body.peso),
+            altura: parseInt(req.body.altura),
+            tipoDiabetes: req.body.tipoDiabetes
         }
     })
 
@@ -61,6 +63,19 @@ export const updateUser = async (req, res) => {
 
 export const deleteUser = async (req, res) => {
     const paciente = await prisma.paciente.delete({
+        where: {
+            idPaciente: req.paciente.idPaciente
+        }
+    })
+
+
+    res.json({
+        data: paciente
+    })
+}
+
+export const getUser = async (req, res) => {
+    const paciente = await prisma.paciente.findFirst({
         where: {
             idPaciente: req.paciente.idPaciente
         }

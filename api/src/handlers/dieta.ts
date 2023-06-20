@@ -9,7 +9,7 @@ export const getDietas = async (req, res) => {
             dietas: true
         }
     })
-
+    
     res.json({
         data: paciente.dietas
     })
@@ -37,7 +37,9 @@ export const createDieta = async (req, res) => {
             ingredientes: req.body.ingredientes,
             fecha: new Date(req.body.fecha),
             hora: req.body.hora,
-            idPaciente: req.paciente.idPaciente
+            idPaciente: req.paciente.idPaciente,
+            cantidad: req.body.cantidad,
+            unidad: req.body.unidad
         }
     })
 
@@ -59,7 +61,9 @@ export const updateDieta = async (req, res) => {
             ingredientes: req.body.ingredientes,
             fecha: new Date(req.body.fecha),
             hora: req.body.hora,
-            idPaciente: req.paciente.idPaciente
+            idPaciente: req.paciente.idPaciente,
+            cantidad: req.body.cantidad,
+            unidad: req.body.unidad
         }
     })
 

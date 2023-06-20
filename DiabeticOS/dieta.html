@@ -5,9 +5,185 @@
   <title>Alimentación</title>
   <link rel="icon" href="Iconos/icon.png" type="png">
   <link rel="stylesheet" href="dieta.css"> <!-- Ruta al archivo CSS -->
+  <link rel="stylesheet" href="ejercicio.css">
   <script src="diabeticos.js"></script>  <!-- Ruta al archivo JS -->
 </head>
 <body>
+  <script>
+    document.addEventListener('DOMContentLoaded', (event) => {
+      const token = localStorage.getItem('token');
+      if (!token) {
+        window.location.href = 'index.html';
+      } else {
+        fetchDietData();
+      }
+    });
+
+
+    async function fetchDietData() {
+  const url = "http://localhost:3001/api/dieta";
+  const dataTable = document.getElementById('DietsTable').getElementsByTagName('tbody')[0];
+
+  const token = localStorage.getItem('token');
+
+  try {
+    const response = await fetch(url, {
+      method: 'GET',
+      headers: {
+        'Authorization': 'Bearer ' + token
+      }
+    });
+
+    const json = await response.json();
+    const data = json.data;
+
+    dataTable.innerHTML = ''; // Clear previous rows
+
+    for (let i = 0; i < data.length; i++) {
+      const diet = data[i];
+
+      const newRow = dataTable.insertRow();
+
+      const hiddenIdCell = newRow.insertCell(0);
+      hiddenIdCell.style.display = 'none'; // This hides the column
+      hiddenIdCell.innerText = diet.idDieta;
+
+      const cell1 = newRow.insertCell(1);
+      const img = document.createElement('img');
+      img.src = `Iconos/fork.png`;
+      img.alt = "Foto del ejercicio";
+      img.classList.add("exercise-image");
+      cell1.appendChild(img);
+
+      const cell2 = newRow.insertCell(2);
+      cell2.innerText = diet.nombre;
+
+      const cell3 = newRow.insertCell(3);
+      cell3.innerText = diet.cantidad || ''; // Check if cantidad is null and handle accordingly
+
+      const cell4 = newRow.insertCell(4);
+      cell4.innerText = diet.unidad || ''; // Check if unidad is null and handle accordingly
+
+      const cell5 = newRow.insertCell(5);
+      cell5.innerText = diet.hora;
+
+      const cell6 = newRow.insertCell(6);
+      const date = new Date(diet.fecha);
+      let formattedDate = `${date.getFullYear()}-${date.getMonth()+1}-${date.getDate()}`; // Date formatted as YYYY-MM-DD
+      //const formattedDate = `${date.getDate()}/${date.getMonth() + 1}/${date.getFullYear()}`; // Date formatted as DD/MM/YYYY
+      cell6.innerText = formattedDate;
+
+      const cell7 = newRow.insertCell(7);
+      const editImg = document.createElement('img');
+      editImg.src = "Iconos/edit.png";
+      editImg.alt = "Editar";
+      editImg.classList.add("edit-image");
+      cell7.appendChild(editImg);
+      editImg.addEventListener('click', () => {
+        editImg.src = "Iconos/aceptar.jpg";
+        editDiet(diet.idDieta, newRow);
+      });
+
+      const cell8 = newRow.insertCell(8);
+      const deleteImg = document.createElement('img');
+      deleteImg.src = "Iconos/delete.png";
+      deleteImg.alt = "Eliminar";
+      deleteImg.classList.add("delete-image");
+      deleteImg.addEventListener('click', () => {
+        deleteDiet(diet.idDieta);
+      }); // Call deleteDiet with the idDieta value
+      cell8.appendChild(deleteImg);
+    }
+  } catch (err) {
+    console.log('Error: ', err);
+  }
+}
+
+async function editDiet(id, row) {
+  const url = `http://localhost:3001/api/dieta/${id}`;
+
+  const nombreCell = row.cells[2];
+  const cantidadCell = row.cells[3];
+  const unidadCell = row.cells[4];
+  const horaCell = row.cells[5];
+  const fechaCell = row.cells[6];
+
+  // Enable editing for the corresponding cells
+  nombreCell.contentEditable = true;
+  cantidadCell.contentEditable = true;
+  unidadCell.contentEditable = true;
+  horaCell.contentEditable = true;
+  fechaCell.contentEditable = true;
+
+  // Change the image source to "Iconos/aceptar.jpg"
+  const editImg = row.cells[7].querySelector('img');
+  editImg.src = "Iconos/aceptar.jpg";
+  editImg.alt = "Aceptar";
+  editImg.removeEventListener('click', editDiet); // Remove the previous click event listener
+
+  // Add a new click event listener to save the changes
+  editImg.addEventListener('click', async () => {
+    // Create the request body using the updated values
+    const requestBody = {
+      nombre: nombreCell.innerText,
+      cantidad: cantidadCell.innerText,
+      unidad: unidadCell.innerText,
+      hora: horaCell.innerText,
+      fecha: fechaCell.innerText
+    };
+
+    const token = localStorage.getItem('token');
+
+    try {
+      const response = await fetch(url, {
+        method: 'PUT',
+        headers: {
+          'Authorization': 'Bearer ' + token,
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(requestBody)
+      });
+
+      if (response.ok) {
+        console.log('Diet edited successfully');
+        fetchDietData(); // Refresh the table
+      } else {
+        console.log('Failed to edit diet');
+      }
+    } catch (err) {
+      console.log('Error: ', err);
+    }
+  });
+}
+
+
+
+    async function deleteDiet(id) {
+      const url = `http://localhost:3001/api/dieta/${id}`;
+      const token = localStorage.getItem('token');
+
+      try {
+        const response = await fetch(url, {
+          method: 'DELETE',
+          headers: {
+            'Authorization': 'Bearer ' + token
+          }
+        });
+
+        if (response.ok) {
+          // Handle successful deletion
+          console.log('Diet deleted successfully');
+          fetchDietData();
+        } else {
+          throw new Error('Error: ' + response.status);
+        }
+      } catch (err) {
+        console.log('Error: ', err);
+      }
+    }
+
+
+  </script>
   <div class="container">
     <div class="header">
       <img src="Profile_photo\foto.jpg" alt="Foto de perfil" class="profile-photo">
@@ -26,20 +202,14 @@
         <label for="alimento">Alimento:</label>
         <select id="alimento" name="alimento" required>
           <option value="">Selecciona un alimento</option>
-          <option value="Huevo">Huevo</option>
-          <option value="Pollo">Pollo</option>
-          <option value="Res">Res</option>
-          <option value="Cerdo">Cerdo</option>
-          <option value="Jamón">Jamón</option>
-          <option value="Salchicha">Salchicha</option>
-          <option value="Longaniza">Longaniza</option>
-          <option value="Ensalada">Ensalada</option>
+          <option value="Alimento 1">Alimento 1</option>
+          <option value="Alimento 2">Alimento 2</option>
         </select>
         <label for="cantidad">Cantidad:</label>
         <input type="number" id="cantidad" name="cantidad" required placeholder="Cantidad en número">
         <label for="unidad">Unidad:</label>
         <select id="unidad" name="unidad" required>
-          <option value="">Selecciona una unidad </option>
+          <option value="">Selecciona una unidad</option>
           <option value="taza">taza</option>
           <option value="gramos">gramos</option>
           <option value="pieza">piezas</option>
@@ -49,8 +219,29 @@
         <label for="fecha">Fecha:</label>
         <input type="date" id="fecha" name="fecha">
         <button type="submit" class="btn-save">Guardar</button>
-      </form>
+      </form>      
     </div>
+
+    <div class="content">
+      <table class="exercise-table" id="DietsTable">
+        <thead>
+          <tr>
+            <th></th>
+            <th>Nombre</th>
+            <th>Cantidad</th>
+            <th>Unidad</th>
+            <th>Hora</th>
+            <th>Fecha</th>
+            <th>Editar</th>
+            <th>Eliminar</th>
+          </tr>
+        </thead>
+        <tbody>
+        </tbody>
+      </table>
+    </div>
+
+  <!--
     <div class="diets-container" id="dietsContainer">
       <div class="diet-box">
         <div class="diet-details">
@@ -65,26 +256,28 @@
           <button class="btn-delete" onclick="eliminarDieta()">Eliminar</button>
         </div>
       </div>
-    </div>    
-    <div class="footer">
-      <hr>
-      <div class="image-gallery">
-        <a href="comunidad.html">
-          <img src="Iconos/inicio.png" alt="Inicio" title="Ve al inicio">
-        </a>
-        <a href="alertas.html">
-          <img src="Iconos/alarmas.png" alt="Alarmas" title="Agrega y personaliza tus alarmas">
-        </a>
-        <a href="perfil.html">
-          <img src="Iconos/perfil.png" alt="Perfil" title="Ve a tu perfil">
-        </a>
-        <a href="ejercicio.html">
-            <img src="Iconos/ejercicio.png" alt="Actividad física" title="Revisa el historial de tu actividad física">
-        </a>
-        <a href="dieta.html">
-          <img src="Iconos/alimentos.png" alt="Alimentos" title="Revisa tus planes alimenticios">
-        </a>
-      </div>
+    </div>   
+  --> 
+
+  </div>
+  <div class="footer">
+    <hr>
+    <div class="image-gallery">
+      <a href="comunidad.html">
+        <img src="Iconos/inicio.png" alt="Inicio" title="Ve al inicio">
+      </a>
+      <a href="alertas.html">
+        <img src="Iconos/alarmas.png" alt="Alarmas" title="Agrega y personaliza tus alarmas">
+      </a>
+      <a href="perfil.html">
+        <img src="Iconos/perfil.png" alt="Perfil" title="Ve a tu perfil">
+      </a>
+      <a href="ejercicio.html">
+          <img src="Iconos/ejercicio.png" alt="Actividad física" title="Revisa el historial de tu actividad física">
+      </a>
+      <a href="dieta.html">
+        <img src="Iconos/alimentos.png" alt="Alimentos" title="Revisa tus planes alimenticios">
+      </a>
     </div>
   </div>
   <script src="diabeticos.js"></script>  

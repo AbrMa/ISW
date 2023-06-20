@@ -34,7 +34,7 @@ export const createEjercicio = async (req, res) => {
     const ejercicio = await prisma.ejercicio.create({
         data: {
             nombre: req.body.nombre,
-            duracion: req.body.duracion,
+            duracion: parseInt(req.body.duracion),
             fecha: new Date(req.body.fecha),
             idPaciente: req.paciente.idPaciente,
         }
@@ -55,7 +55,7 @@ export const updateEjercicio = async (req, res) => {
         },
         data: {
             nombre: req.body.nombre,
-            duracion: req.body.duracion,
+            duracion: parseInt(req.body.duracion),
             fecha: new Date(req.body.fecha),
             idPaciente: req.paciente.idPaciente,
         }

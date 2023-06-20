@@ -48,7 +48,11 @@ function iniciarSesion() {
 
 //Esta funcion soo redirecciona a inicio
 function cerrarSesion() {
-  window.location.href = "index.html";
+  // Remove token from local storage
+  localStorage.removeItem('token');
+      
+  // Redirect to 'index.html'
+  window.location.href = 'index.html';
 }
 
 //Esta funcion solo direcciona al soporte técnico
@@ -224,33 +228,45 @@ document.addEventListener("DOMContentLoaded", function() {
 });
 
 //Mensaje de alimento agregado
-function guardarDatosalimento(event) {
+async function guardarDatosalimento(event) {
   event.preventDefault();
 
-  // Obtener los valores de los campos del formulario
-  var alimento = document.getElementById("alimento").value;
-  var unidad = document.getElementById("unidad").value;
-  var hora = document.getElementById("hora").value;
-  var fecha = document.getElementById("fecha").value;
-  var cantidad = document.getElementById("cantidad").value;
+  const nombre = document.getElementById('alimento').value;
+  const cantidad = document.getElementById('cantidad').value;
+  const unidad = document.getElementById('unidad').value;
+  const hora = document.getElementById('hora').value;
+  const fecha = document.getElementById('fecha').value;
 
-  // Verificar que todos los campos estén llenos
-  if (alimento && unidad && hora && fecha && cantidad ) {
-    // Mostrar el mensaje de éxito
-    var successMessage = document.getElementById("successMessage");
-    successMessage.textContent = "Sus datos se guardaron correctamente.";
-    successMessage.classList.remove("hidden");
+  const data = {
+    nombre: nombre,
+    cantidad: cantidad,
+    unidad: unidad,
+    hora: hora,
+    fecha: fecha
+  };
 
-    // Ocultar el mensaje después de 4 segundos
-    setTimeout(function() {
-      successMessage.classList.add("hidden");
-    }, 4000);
+  const token = localStorage.getItem('token');
 
-    // Ocultar formulario y mostrar elementos de las alarmas
-    ocultarFormularioalimento();
-    mostrarAlarmasalimento();
+  try {
+    const response = await fetch('http://localhost:3001/api/dieta', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'Authorization': `Bearer ${token}`
+      },
+      body: JSON.stringify(data)
+    });
+
+    if (response.ok) {
+      alert('Nueva dieta agregada')
+      // Add code here to update the UI or perform any additional actions
+    } else {
+      throw new Error('Error: ' + response.status);
+    }
+  } catch (error) {
+    alert('Datos incorrectos')
   }
-} 
+}
 
 function mostrarFormularioalimento() {
   var formulariodieta = document.getElementById("formAgregarAlimento");
@@ -286,28 +302,43 @@ document.addEventListener("DOMContentLoaded", function() {
 function guardarDatosejercicio(event) {
   event.preventDefault();
 
-  // Obtener los valores de los campos del formulario
-  var ejercicio = document.getElementById("ejercicio").value;
-  var tiempo = document.getElementById("tiempo").value;
-  var fecha = document.getElementById("fecha").value;
-  
+  const nombre = document.getElementById('ejercicio').value;
+  const duracion = document.getElementById('tiempo').value;
+  const fecha = document.getElementById('fecha').value;
 
-  // Verificar que todos los campos estén llenos
-  if (ejercicio && tiempo && fecha  ) {
-    // Mostrar el mensaje de éxito
-    var successMessage = document.getElementById("successMessage");
-    successMessage.textContent = "Sus datos se guardaron correctamente.";
-    successMessage.classList.remove("hidden");
+  // Convert date to YYYY-MM-DD format
+  let dateObject = new Date(fecha);
+  let formattedDate = dateObject.toISOString().split('T')[0];
 
-    // Ocultar el mensaje después de 4 segundos
-    setTimeout(function() {
-      successMessage.classList.add("hidden");
-    }, 4000);
+  const ejercicioData = {
+      nombre: nombre,
+      duracion: duracion,
+      fecha: formattedDate
+  };
 
-    // Ocultar formulario y mostrar elementos de las alarmas
-    ocultarFormularioejercicio();
-    mostrarAlarmasejercicio();
-  }
+  // Get token
+  const token = localStorage.getItem('token');
+
+  // Make the POST request
+  fetch('http://localhost:3001/api/ejercicio', {
+      method: 'POST',
+      headers: {
+          'Content-Type': 'application/json',
+          'Authorization': 'Bearer ' + token
+      },
+      body: JSON.stringify(ejercicioData)
+  })
+  .then(response => {
+    if (response.ok) {
+        alert('Usuario ha modificado sus datos');
+    } else {
+        throw new Error('Failed to update user data');
+    }
+  })
+  .catch((error) => {
+      console.error('Error:', error);
+      alert('Datos inválidos');
+  });
 } 
 
 function mostrarFormularioejercicio() {
@@ -328,5 +359,3 @@ function mostrarAlarmasejercicio(){
   var dietsContainer = document.getElementById("ExerciseTable");
   dietsContainer.style.display = "block";
 }
-
-
