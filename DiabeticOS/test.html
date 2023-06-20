@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Test Page</title>
+</head>
+<body>
+  <h1>Data:</h1>
+  <table id="dataTable">
+    <thead>
+      <tr>
+        <th>Nombre</th>
+        <th>Duración</th>
+        <th>Fecha</th>
+      </tr>
+    </thead>
+    <tbody>
+      <!-- Data rows will go here -->
+    </tbody>
+  </table>
+
+  <script>
+    async function fetchData() {
+      const token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZFBhY2llbnRlIjoiZTAyNzg4YjktYmEzZi00MzM1LTk5OWEtMzVjNjhmM2Q3NDljIiwiY29ycmVvIjoiY29ycmVvMkBkb21pbmlvY2hpZG8uY29tIiwiaWF0IjoxNjg3MjA0NjMzfQ.ammrkGo9mlPDM96ODQY-hPAbPvEYDZPrBFcu66rY8KE";
+      const url = "http://localhost:3001/api/ejercicio";
+      const dataTable = document.getElementById('dataTable').getElementsByTagName('tbody')[0];
+
+      try {
+        const response = await fetch(url, {
+          method: 'GET', 
+          headers: {
+            'Authorization': 'Bearer ' + token, 
+          }
+        });
+        
+        const json = await response.json();
+        const data = json.data;
+
+        for(let i = 0; i < data.length; i++) {
+          let newRow = dataTable.insertRow();
+
+          let cell1 = newRow.insertCell(0);
+          let cell2 = newRow.insertCell(1);
+          let cell3 = newRow.insertCell(2);
+
+          cell1.innerText = data[i].nombre;
+          cell2.innerText = data[i].duracion;
+          cell3.innerText = new Date(data[i].fecha).toLocaleDateString();
+        }
+
+      } catch (err) {
+        console.log('Error: ', err);
+      }
+    }
+
+    // Call the function
+    fetchData();
+  </script>
+</body>
+</html>

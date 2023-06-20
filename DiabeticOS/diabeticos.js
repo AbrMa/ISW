@@ -342,5 +342,3 @@ function mostrarAlarmasejercicio(){
   var dietsContainer = document.getElementById("ExerciseTable");
   dietsContainer.style.display = "block";
 }
-
-
