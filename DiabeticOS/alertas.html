@@ -6,15 +6,217 @@
   <link rel="icon" href="Iconos/icon.png" type="png">
   <link rel="stylesheet" href="alertas.css"> <!-- Ruta al archivo CSS -->
   <script src="diabeticos.js"></script>  <!-- Ruta al archivo JS -->
+  <link rel="stylesheet" href="ejercicio.css"> <!-- Ruta al archivo CSS -->
 </head>
 <body>
   <script>
-    document.addEventListener('DOMContentLoaded', (event) => {
-                const token = localStorage.getItem('token');
-                if (!token) {
-                    window.location.href = 'index.html';
-                }
-            });
+  document.addEventListener('DOMContentLoaded', (event) => {
+      const token = localStorage.getItem('token');
+      if (!token) {
+        window.location.href = 'index.html';
+      } else {
+        fetchAlertasData();
+      }
+    });
+
+    async function fetchAlertasData() {
+    const url = "http://localhost:3001/api/medicamento";
+    const dataTable = document.getElementById('DietsTable').getElementsByTagName('tbody')[0];
+
+    const token = localStorage.getItem('token');
+
+    try {
+      const response = await fetch(url, {
+        method: 'GET',
+        headers: {
+          'Authorization': 'Bearer ' + token
+        }
+      });
+
+      const json = await response.json();
+      const data = json.data;
+
+      dataTable.innerHTML = ''; // Clear previous rows
+
+      for (let i = 0; i < data.length; i++) {
+        const medicamento = data[i];
+
+        const newRow = dataTable.insertRow();
+
+        const hiddenIdCell = newRow.insertCell(0);
+        hiddenIdCell.style.display = 'none'; // This hides the column
+        hiddenIdCell.innerText = medicamento.idMedicamento;
+
+        const cell1 = newRow.insertCell(1);
+        const img = document.createElement('img');
+        img.src = `Iconos/clock.png`;
+        img.alt = "Foto del ejercicio";
+        img.classList.add("exercise-image");
+        cell1.appendChild(img);
+
+        const cell2 = newRow.insertCell(2);
+        cell2.innerText = medicamento.nombre;
+
+        const cell3 = newRow.insertCell(3);
+        cell3.innerText = medicamento.repetir || ''; // Check if cantidad is null and handle accordingly
+
+        const cell4 = newRow.insertCell(4);
+        cell4.innerText = medicamento.hora || ''; // Check if unidad is null and handle accordingly
+
+        const cell5 = newRow.insertCell(5);
+        const editImg = document.createElement('img');
+        editImg.src = "Iconos/edit.png";
+        editImg.alt = "Editar";
+        editImg.classList.add("edit-image");
+        cell5.appendChild(editImg);
+        editImg.addEventListener('click', () => {
+          editImg.src = "Iconos/aceptar.jpg";
+          editMedicamento(medicamento.idMedicamento, newRow);
+        });
+
+        const cell6 = newRow.insertCell(6);
+        const deleteImg = document.createElement('img');
+        deleteImg.src = "Iconos/delete.png";
+        deleteImg.alt = "Eliminar";
+        deleteImg.classList.add("delete-image");
+        deleteImg.addEventListener('click', () => {
+          deleteAlerta(medicamento.idMedicamento);
+        }); // Call deleteDiet with the idDieta value
+        cell6.appendChild(deleteImg);
+      }
+    } catch (err) {
+      console.log('Error: ', err);
+    }
+  }
+
+  async function editMedicamento(id, row) {
+  const url = `http://localhost:3001/api/medicamento/${id}`;
+
+  const nombreCell = row.cells[2];
+  const repetirCell = row.cells[3];
+  const horaCell = row.cells[4];
+
+  // Enable editing for the corresponding cells
+  nombreCell.contentEditable = true;
+  repetirCell.contentEditable = true;
+  horaCell.contentEditable = true;
+
+  // Change the image source to "Iconos/aceptar.jpg"
+  const editImg = row.cells[5].querySelector('img');
+  editImg.src = "Iconos/aceptar.jpg";
+  editImg.alt = "Aceptar";
+  editImg.removeEventListener('click', editAlerta); // Remove the previous click event listener
+
+  // Add a new click event listener to save the changes
+  editImg.addEventListener('click', async () => {
+    // Create the request body using the updated values
+    const requestBody = {
+      nombre: nombreCell.innerText,
+      hora: horaCell.innerText,
+      repetir: repetirCell.innerText
+    };
+
+    const token = localStorage.getItem('token');
+
+    try {
+      const response = await fetch(url, {
+        method: 'PUT',
+        headers: {
+          'Authorization': 'Bearer ' + token,
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(requestBody)
+      });
+
+      if (response.ok) {
+        console.log('alerta edited successfully');
+        fetchAlertasData(); // Refresh the table
+      } else {
+        console.log('fallo to edit alerta');
+      }
+    } catch (err) {
+      console.log('Error: ', err);
+    }
+  });
+}
+
+
+async function editAlerta(id, row) {
+  const url = `http://localhost:3001/api/medicamento/${id}`;
+
+  const nombreCell = row.cells[2];
+  const repetirCell = row.cells[3];
+  const horaCell = row.cells[4];
+
+  // Enable editing for the corresponding cells
+  nombreCell.contentEditable = true;
+  repetirCell.contentEditable = true;
+  horaCell.contentEditable = true;
+
+  // Change the image source to "Iconos/aceptar.jpg"
+  const editImg = row.cells[5].querySelector('img');
+  editImg.src = "Iconos/aceptar.jpg";
+  editImg.alt = "Aceptar";
+  editImg.removeEventListener('click', editAlerta); // Remove the previous click event listener
+
+  // Add a new click event listener to save the changes
+  editImg.addEventListener('click', async () => {
+    // Create the request body using the updated values
+    const requestBody = {
+      nombre: nombreCell.innerText,
+      repetir: repetirCell.innerText,
+      hora: horaCell.innerText,
+    };
+
+    const token = localStorage.getItem('token');
+
+    try {
+      const response = await fetch(url, {
+        method: 'PUT',
+        headers: {
+          'Authorization': 'Bearer ' + token,
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(requestBody)
+      });
+
+      if (response.ok) {
+        console.log('alarma edited successfully');
+        fetchDietData(); // Refresh the table
+      } else {
+        console.log('Failed to edit alarma');
+      }
+    } catch (err) {
+      console.log('Error: ', err);
+    }
+  });
+}
+
+async function deleteAlerta(id) {
+      const url = `http://localhost:3001/api/medicamento/${id}`;
+      const token = localStorage.getItem('token');
+
+      try {
+        const response = await fetch(url, {
+          method: 'DELETE',
+          headers: {
+            'Authorization': 'Bearer ' + token
+          }
+        });
+
+        if (response.ok) {
+          // Handle successful deletion
+          console.log('medicamento deleted successfully');
+          fetchAlertasData();
+        } else {
+          throw new Error('Error: ' + response.status);
+        }
+      } catch (err) {
+        console.log('Error: ', err);
+      }
+    }
+
+
   </script>
   <div class="container">
     <div class="header">
@@ -26,6 +228,7 @@
         <button type="button" class="btn btn-close" onclick="cerrarSesion()">Cerrar sesión</button>
       </div>
     </div>
+    
     <div class="content">
       <div id="successMessage" class="hidden"></div>
       <h2 class="title">Alarmas</h2>
@@ -35,19 +238,29 @@
         <input type="text" id="hora" name="hora" required placeholder="HH:MM" pattern="([01]?[0-9]|2[0-3]):[0-5][0-9]" title="Ingrese una hora válida en formato HH:MM">
         <label for="repetir">Repetir:</label>
         <select id="repetir" name="repetir" required>
-          <option value="diario">Diario</option>
-          <option value="solo_hoy">Solo hoy</option>
-          <option value="nunca">Nunca</option>
+          <option value="Diario">Diario</option>
+          <option value="Solo hoy">Solo hoy</option>
+          <option value="Nunca">Nunca</option>
         </select>
         <label for="medicamento">Medicamento:</label>
         <select id="medicamento" name="medicamento" required>
           <option value="">Selecciona un medicamento</option>
-          <option value="Medicamento 1">Medicamento 1</option>
-          <option value="Medicamento 2">Medicamento 2</option>
-          <!-- Agrega aquí más opciones de medicamentos -->
+          <option value="Metformina">Metformina</option>
+          <option value="Insulina">Insulina</option>
+          <option value="Glibenclamida">Glibenclamida</option>
+          <option value="Glimepirida">Glimepirida</option>
+          <option value="Sitagliptina">Sitagliptina</option>
+          <option value="Pioglitazona">Pioglitazona</option>
+          <option value="Acarbosa">Acarbosa</option>
+          <option value="Empagliflozina">Empagliflozina</option>
+          <option value="Liraglutida">Liraglutida</option>
+          <option value="Dulaglutida">Dulaglutida</option>
+         
         </select>
         <button type="submit" class="btn-save">Guardar</button>
       </form>
+
+      <!--
       <div class="alarms-container" id="alarmsContainer">
         <div class="alarm-box">
           <div class="alarm-details">
@@ -61,27 +274,46 @@
           </div>
         </div>
       </div>
+      -->
+    </div>
+ 
+    <div class="content">
+      <table class="exercise-table" id="DietsTable">
+        <thead>
+          <tr>
+            <th></th>
+            <th>Nombre Medicamento</th>
+            <th>Repetir</th>
+            <th>Hora</th>
+            <th>Editar</th>
+            <th>Eliminar</th>
+          </tr>
+        </thead>
+        <tbody>
+        </tbody>
+      </table>
     </div>
     
-    <div class="footer">
-      <hr>
-      <div class="image-gallery">
-        <a href="comunidad.html">
-          <img src="Iconos/inicio.png" alt="Inicio" title="Ve al inicio">
-        </a>
-        <a href="alertas.html">
-          <img src="Iconos/alarmas.png" alt="Alarmas" title="Agrega y personaliza tus alarmas">
-        </a>
-        <a href="perfil.html">
-          <img src="Iconos/perfil.png" alt="Perfil" title="Ve a tu perfil">
-        </a>
-        <a href="ejercicio.html">
-            <img src="Iconos/ejercicio.png" alt="Actividad física" title="Revisa el historial de tu actividad física">
-        </a>
-        <a href="dieta.html">
-          <img src="Iconos/alimentos.png" alt="Alimentos" title="Revisa tus planes alimenticios">
-        </a>
-      </div>
+
+    </div>
+  <div class="footer">
+    <hr>
+    <div class="image-gallery">
+      <a href="comunidad.html">
+        <img src="Iconos/inicio.png" alt="Inicio" title="Ve al inicio">
+      </a>
+      <a href="alertas.html">
+        <img src="Iconos/alarmas.png" alt="Alarmas" title="Agrega y personaliza tus alarmas">
+      </a>
+      <a href="perfil.html">
+        <img src="Iconos/perfil.png" alt="Perfil" title="Ve a tu perfil">
+      </a>
+      <a href="ejercicio.html">
+          <img src="Iconos/ejercicio.png" alt="Actividad física" title="Revisa el historial de tu actividad física">
+      </a>
+      <a href="dieta.html">
+        <img src="Iconos/alimentos.png" alt="Alimentos" title="Revisa tus planes alimenticios">
+      </a>
     </div>
   </div>
   <script src="diabeticos.js"></script>  
