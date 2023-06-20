@@ -326,7 +326,7 @@ function mostrarFormularioejercicio() {
   var formularioejercicio = document.getElementById("formAgregarEjercicio");
   formularioejercicio.classList.remove("hidden");
 
-  // Ocultar elementos de las alarmas
+  // Ocultar elementos de la tabla
   var dietsContainer = document.getElementById("ExerciseTable");
   dietsContainer.style.display = "none";
 }
@@ -346,9 +346,9 @@ function mostrarFormularioalimento() {
   var formularioalimento = document.getElementById("formAgregarAlimento");
   formularioalimento.classList.remove("hidden");
 
-  // Ocultar elementos de las alarmas
-  var dietsContainer = document.getElementById("DietsTable");
-  dietsContainer.style.display = "none";
+  // Ocultar elementos de la tabla
+  var dietsTable = document.getElementById("DietsTable");
+  dietsTable.style.display = "none";
 }
 
 function ocultarFormularioalimento() {
@@ -356,9 +356,9 @@ function ocultarFormularioalimento() {
   formulario.classList.add("hidden");
 }
 
-function mostrarAlarmasalimento(){
-  var dietsContainer = document.getElementById("DietsTable");
-  dietsContainer.style.display = "block";
+function mostrarTablaalimento(){
+  var dietsTable = document.getElementById("DietsTable");
+  dietsTable.style.display = "block";
 }
 
 
