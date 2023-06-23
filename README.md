@@ -3,7 +3,10 @@ Proyecto final del curso de Ingeniería de Software ESCOM 2023 con el profesor M
 
 DiabeticOS es una aplicación web para el registro de medicamentos, dietas y ejercicios de personas con diabetes. 
 
-<img width="1043" alt="Captura de pantalla 2023-06-22 a la(s) 20 53 34" src="https://github.com/AbrMa/ISW/assets/8070765/c2009e88-e603-4834-b0f1-50312080a19a">
+![diabeticos](https://github.com/AbrMa/ISW/assets/8070765/173dba2f-74dd-4bf2-a2c6-6f486f5c4600)
+
+<img width="1162" alt="Captura de pantalla 2023-06-22 a la(s) 21 10 14" src="https://github.com/AbrMa/ISW/assets/8070765/85c19b50-8b1e-4ab3-959a-eddb6d692cdd">
+
 
 ## Documentación
 
@@ -12,6 +15,8 @@ DiabeticOS es una aplicación web para el registro de medicamentos, dietas y eje
 - [¿Cómo utiilizar la API?](https://github.com/AbrMa/ISW/wiki/%C2%BFC%C3%B3mo-utilizar-la-API%3F)
 
 ## Capturas del sistema
+
+<img width="1043" alt="Captura de pantalla 2023-06-22 a la(s) 20 53 34" src="https://github.com/AbrMa/ISW/assets/8070765/c2009e88-e603-4834-b0f1-50312080a19a">
 
 <img width="995" alt="Captura de pantalla 2023-06-22 a la(s) 20 53 58" src="https://github.com/AbrMa/ISW/assets/8070765/a906b838-8c88-4b2e-a6f7-f119cec2c298">
 
