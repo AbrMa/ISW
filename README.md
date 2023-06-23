@@ -3,10 +3,10 @@ Proyecto final del curso de Ingeniería de Software ESCOM 2023 con el profesor M
 
 DiabeticOS es una aplicación web para el registro de medicamentos, dietas y ejercicios de personas con diabetes. 
 
-![diabeticos](https://github.com/AbrMa/ISW/assets/8070765/173dba2f-74dd-4bf2-a2c6-6f486f5c4600)
 
-<img width="1162" alt="Captura de pantalla 2023-06-22 a la(s) 21 10 14" src="https://github.com/AbrMa/ISW/assets/8070765/85c19b50-8b1e-4ab3-959a-eddb6d692cdd">
+![248143702-173dba2f-74dd-4bf2-a2c6-6f486f5c4600](https://github.com/AbrMa/ISW/assets/8070765/c124dfd4-a5e0-4b24-afbb-48d62cfb61b0)
 
+<img width="1162" alt="248143906-85c19b50-8b1e-4ab3-959a-eddb6d692cdd" src="https://github.com/AbrMa/ISW/assets/8070765/b7b2cbd3-dd0b-4885-8d2c-901b1477a4ce">
 
 ## Documentación
 
@@ -16,13 +16,14 @@ DiabeticOS es una aplicación web para el registro de medicamentos, dietas y eje
 
 ## Capturas del sistema
 
-<img width="1043" alt="Captura de pantalla 2023-06-22 a la(s) 20 53 34" src="https://github.com/AbrMa/ISW/assets/8070765/c2009e88-e603-4834-b0f1-50312080a19a">
+<img width="1162" alt="248143906-85c19b50-8b1e-4ab3-959a-eddb6d692cdd" src="https://github.com/AbrMa/ISW/assets/8070765/6abe15e3-4f0f-496f-99aa-672cf744cd4f">
 
-<img width="995" alt="Captura de pantalla 2023-06-22 a la(s) 20 53 58" src="https://github.com/AbrMa/ISW/assets/8070765/a906b838-8c88-4b2e-a6f7-f119cec2c298">
+<img width="995" alt="248141955-a906b838-8c88-4b2e-a6f7-f119cec2c298" src="https://github.com/AbrMa/ISW/assets/8070765/36cf5ce8-d6b4-4eea-9e72-c8b353532674">
 
-<img width="970" alt="Captura de pantalla 2023-06-22 a la(s) 20 54 11" src="https://github.com/AbrMa/ISW/assets/8070765/8d586265-ce6c-4e97-bf5f-9558736538dc">
+<img width="970" alt="248141991-8d586265-ce6c-4e97-bf5f-9558736538dc" src="https://github.com/AbrMa/ISW/assets/8070765/87b91503-6d2c-48c1-a16f-786db1cce68e">
 
-<img width="999" alt="Captura de pantalla 2023-06-22 a la(s) 20 54 23" src="https://github.com/AbrMa/ISW/assets/8070765/e209d291-f994-4656-a06c-47b57535a982">
+<img width="999" alt="248142016-e209d291-f994-4656-a06c-47b57535a982" src="https://github.com/AbrMa/ISW/assets/8070765/cbcc2b67-92e8-4219-899b-121fe64f43a8">
+
 
 ## ¿Cómo correr el proyecto?
 
@@ -44,7 +45,7 @@ $ npm i
 $ npm run dev
 ```
 
-<img width="356" alt="Captura de pantalla 2023-06-22 a la(s) 20 51 40" src="https://github.com/AbrMa/ISW/assets/8070765/0ac4a16e-ee71-4045-8fe8-4c4b68883bdf">
+<img width="356" alt="248141643-0ac4a16e-ee71-4045-8fe8-4c4b68883bdf" src="https://github.com/AbrMa/ISW/assets/8070765/3b53193f-ec3c-4478-a64a-65ca7c9c8a3b">
 
 ### Frontend
 
@@ -55,7 +56,7 @@ $ npm i
 $ node server.js
 ```
 
-<img width="827" alt="Captura de pantalla 2023-06-22 a la(s) 20 51 11" src="https://github.com/AbrMa/ISW/assets/8070765/dca21ca8-3af7-49eb-81f3-ce0e9c00173d">
+<img width="827" alt="248141585-dca21ca8-3af7-49eb-81f3-ce0e9c00173d" src="https://github.com/AbrMa/ISW/assets/8070765/b924f484-b6a4-481d-85f1-144d81f11ab6">
 
 ## ¿Cómo contribuir al proyecto?
 
