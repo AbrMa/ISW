@@ -16,7 +16,6 @@ DiabeticOS es una aplicación web para el registro de medicamentos, dietas y eje
 
 ## Capturas del sistema
 
-<img width="1162" alt="248143906-85c19b50-8b1e-4ab3-959a-eddb6d692cdd" src="https://github.com/AbrMa/ISW/assets/8070765/6abe15e3-4f0f-496f-99aa-672cf744cd4f">
 
 <img width="995" alt="248141955-a906b838-8c88-4b2e-a6f7-f119cec2c298" src="https://github.com/AbrMa/ISW/assets/8070765/36cf5ce8-d6b4-4eea-9e72-c8b353532674">
 
